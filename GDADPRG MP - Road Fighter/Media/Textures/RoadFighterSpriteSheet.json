@@ -1,0 +1,268 @@
+{"frames": {
+
+"barrel_cyan.png":
+{
+	"frame": {"x":0,"y":0,"w":60,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":42},
+	"sourceSize": {"w":60,"h":42}
+},
+"barrel_red.png":
+{
+	"frame": {"x":60,"y":0,"w":60,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":42},
+	"sourceSize": {"w":60,"h":42}
+},
+"barrel_yellow.png":
+{
+	"frame": {"x":120,"y":0,"w":60,"h":42},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":42},
+	"sourceSize": {"w":60,"h":42}
+},
+"car_powerup.png":
+{
+	"frame": {"x":348,"y":114,"w":66,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":90},
+	"sourceSize": {"w":66,"h":90}
+},
+"enemy_cyan_0.png":
+{
+	"frame": {"x":144,"y":204,"w":66,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":96},
+	"sourceSize": {"w":66,"h":96}
+},
+"enemy_cyan_1.png":
+{
+	"frame": {"x":210,"y":204,"w":72,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":96},
+	"sourceSize": {"w":72,"h":96}
+},
+"enemy_cyan_2.png":
+{
+	"frame": {"x":282,"y":204,"w":60,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":96},
+	"sourceSize": {"w":60,"h":96}
+},
+"enemy_cyan_3.png":
+{
+	"frame": {"x":342,"y":204,"w":66,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":96},
+	"sourceSize": {"w":66,"h":96}
+},
+"enemy_red_0.png":
+{
+	"frame": {"x":408,"y":204,"w":66,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":96},
+	"sourceSize": {"w":66,"h":96}
+},
+"enemy_red_1.png":
+{
+	"frame": {"x":0,"y":300,"w":72,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":96},
+	"sourceSize": {"w":72,"h":96}
+},
+"enemy_red_2.png":
+{
+	"frame": {"x":72,"y":300,"w":60,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":96},
+	"sourceSize": {"w":60,"h":96}
+},
+"enemy_red_3.png":
+{
+	"frame": {"x":132,"y":300,"w":66,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":96},
+	"sourceSize": {"w":66,"h":96}
+},
+"enemy_yellow_0.png":
+{
+	"frame": {"x":198,"y":300,"w":66,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":96},
+	"sourceSize": {"w":66,"h":96}
+},
+"enemy_yellow_1.png":
+{
+	"frame": {"x":264,"y":300,"w":72,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":96},
+	"sourceSize": {"w":72,"h":96}
+},
+"enemy_yellow_2.png":
+{
+	"frame": {"x":336,"y":300,"w":60,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":96},
+	"sourceSize": {"w":60,"h":96}
+},
+"enemy_yellow_3.png":
+{
+	"frame": {"x":396,"y":300,"w":66,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":96},
+	"sourceSize": {"w":66,"h":96}
+},
+"flag_end.png":
+{
+	"frame": {"x":180,"y":0,"w":42,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":48},
+	"sourceSize": {"w":42,"h":48}
+},
+"flag_start.png":
+{
+	"frame": {"x":222,"y":0,"w":42,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":48},
+	"sourceSize": {"w":42,"h":48}
+},
+"goal_line.png":
+{
+	"frame": {"x":0,"y":48,"w":384,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":48},
+	"sourceSize": {"w":384,"h":48}
+},
+"hero.png":
+{
+	"frame": {"x":324,"y":396,"w":60,"h":192},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":192},
+	"sourceSize": {"w":60,"h":192}
+},
+"obstacle_manhole.png":
+{
+	"frame": {"x":0,"y":114,"w":96,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":72},
+	"sourceSize": {"w":96,"h":72}
+},
+"player_car_0.png":
+{
+	"frame": {"x":0,"y":396,"w":66,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":96},
+	"sourceSize": {"w":66,"h":96}
+},
+"player_car_1.png":
+{
+	"frame": {"x":66,"y":396,"w":84,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":96},
+	"sourceSize": {"w":84,"h":96}
+},
+"player_car_2.png":
+{
+	"frame": {"x":258,"y":114,"w":90,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":84},
+	"sourceSize": {"w":90,"h":84}
+},
+"player_car_3.png":
+{
+	"frame": {"x":96,"y":114,"w":90,"h":72},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":72},
+	"sourceSize": {"w":90,"h":72}
+},
+"player_car_4.png":
+{
+	"frame": {"x":150,"y":396,"w":84,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":96},
+	"sourceSize": {"w":84,"h":96}
+},
+"player_car_5.png":
+{
+	"frame": {"x":0,"y":204,"w":96,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":90},
+	"sourceSize": {"w":96,"h":90}
+},
+"player_car_6.png":
+{
+	"frame": {"x":384,"y":48,"w":90,"h":66},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":66},
+	"sourceSize": {"w":90,"h":66}
+},
+"player_car_hud.png":
+{
+	"frame": {"x":96,"y":204,"w":48,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":90},
+	"sourceSize": {"w":48,"h":90}
+},
+"player_death_0.png":
+{
+	"frame": {"x":186,"y":114,"w":72,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":78},
+	"sourceSize": {"w":72,"h":78}
+},
+"player_death_1.png":
+{
+	"frame": {"x":234,"y":396,"w":90,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":96},
+	"sourceSize": {"w":90,"h":96}
+},
+"truck.png":
+{
+	"frame": {"x":384,"y":396,"w":90,"h":192},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":192},
+	"sourceSize": {"w":90,"h":192}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "BasicSpriteSheet.png",
+	"format": "RGBA8888",
+	"size": {"w":474,"h":588},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:206e58e897b86fd5367c76e5b6e32137:337e9e0a714ba4c8220b3023df37b98d:63a84bc53617898f5c5cf5e9ec9cde42$"
+}
+}
