@@ -25,6 +25,10 @@ private:
 public:
 	// scene names
 	static std::string MAIN_MENU_SCREEN_NAME;
+	static std::string LEVEL_ONE_COURSE_ONE_NAME;
+	static std::string LEVEL_ONE_COURSE_TWO_NAME;
+	static std::string LEVEL_TWO_COURSE_ONE_NAME;
+	static std::string LEVEL_TWO_COURSE_TWO_NAME;
 	
 private:
 	static SceneManager* sharedInstance;

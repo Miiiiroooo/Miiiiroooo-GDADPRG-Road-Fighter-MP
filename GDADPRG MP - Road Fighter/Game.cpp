@@ -35,7 +35,12 @@ void Game::run()
 		}
 
 		render();
-		//SceneManager::getInstance()->checkLoadScene();
+		SceneManager::getInstance()->checkLoadScene();
+
+		/*
+		if (SceneManager::getInstance()->isSceneLoaded(SceneManager::GAME_SCENE_NAME))
+			PhysicsManager::getInstance()->perform();
+		*/
 	}
 }
 
@@ -53,7 +58,7 @@ void Game::processInputs()
 			m_Window.close();
 			break;
 		default:
-			//GameManager::getInstance()->processInputs(event);
+			GameObjectManager::getInstance()->processInput(event);
 			break;
 		}
 	}
@@ -62,7 +67,7 @@ void Game::processInputs()
 
 void Game::update(sf::Time deltaTime)
 {
-	//GameObjectManager::getInstance()->update(deltaTime);
+	GameObjectManager::getInstance()->update(deltaTime);
 }
 
 
@@ -70,7 +75,7 @@ void Game::render()
 {
 	m_Window.clear();
 
-	//GameObjectManager::getInstance()->draw(&m_Window);
+	GameObjectManager::getInstance()->draw(&m_Window);
 
 	m_Window.display();
 }

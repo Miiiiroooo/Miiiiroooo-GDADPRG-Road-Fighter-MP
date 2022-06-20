@@ -1,5 +1,10 @@
 #pragma once
 
+#include "SceneManager.h"
+#include "TextureManager.h"
+#include "GameObjectManager.h"
+#include "SFXManager.h"
+#include "PhysicsManager.h"
 
 class Game
 {

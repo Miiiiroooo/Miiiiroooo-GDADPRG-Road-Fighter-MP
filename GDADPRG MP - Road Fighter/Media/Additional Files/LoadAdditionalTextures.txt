@@ -1,0 +1,11 @@
+CourseOne     Media/Textures/course_one.png
+CourseTwo     Media/Textures/course_two.png
+CourseTwoSlimmer     Media/Textures/course_two_slimmer.png
+GameLogo     Media/Textures/game_logo.png
+ArrowHUD     Media/UI/arrow_hud.png
+PauseButton     Media/UI/button_pause.png
+CheckpointHUD     Media/UI/checkpoint_hud.png
+EmptyHUD     Media/UI/empty_hud.png
+FuelHUD     Media/UI/fuel_hud.png
+GoalHUD     Media/UI/goal_hud.png
+SpeedHUD     Media/UI/speed_hud.png
