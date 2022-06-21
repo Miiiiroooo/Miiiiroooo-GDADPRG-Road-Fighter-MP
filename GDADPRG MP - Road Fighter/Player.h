@@ -6,10 +6,15 @@ public:
 	Player(std::string name);
 	void initialize();
 
-	sf::Event event;
+	void setNormalTexture();
+	void setCrashedTexture();
+
+	
+
 private:
 	const float SPEED_MULTIPLIER = 100.0f;
-	bool moveDown = false;
-	bool moveLeft = false;
+	sf::Texture* normalTexture;
+	sf::Texture* crashedTexture;
+		
 };
 

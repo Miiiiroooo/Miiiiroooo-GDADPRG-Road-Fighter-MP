@@ -15,9 +15,14 @@ BackgroundScroll::~BackgroundScroll()
 
 void BackgroundScroll::perform()
 {
-	GameManager* gameManager = (GameManager*)GameObjectManager::getInstance()->findObjectByName("GameManager");
-	SPEED_MULTIPLIER = gameManager->getSpeed();
+	gameManager = gameManager = (GameManager*)GameObjectManager::getInstance()->findObjectByName("GameManager");
 
+	if (gameManager->crashed())
+	{
+		return;
+	}
+
+	SPEED_MULTIPLIER = gameManager->getSpeed();
 	float scrollSpeed;
 
 	if (SPEED_MULTIPLIER < 0)
@@ -28,9 +33,6 @@ void BackgroundScroll::perform()
 	{
 		scrollSpeed = pow(SPEED_MULTIPLIER, 1.2);
 	}
-	 
-	
-	
 
 	sf::Sprite* sprite = this->getOwner()->getSprite();
 	sf::Vector2f offset(0.0f, 0.0f);
@@ -43,5 +45,5 @@ void BackgroundScroll::perform()
 		sprite->setPosition(sprite->getPosition().x, -Game::WINDOW_HEIGHT * 7);
 	}
 
-	cout << "Scroll Speed: " << scrollSpeed << endl;
+	//cout << "Scroll Speed: " << scrollSpeed << endl;
 }

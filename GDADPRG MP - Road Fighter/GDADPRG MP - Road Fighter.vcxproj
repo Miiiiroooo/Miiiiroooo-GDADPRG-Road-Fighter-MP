@@ -163,6 +163,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BackgroundScroll.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CrashComponent.cpp" />
     <ClCompile Include="EmptyGameObject.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="ButtonListener.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionListener.h" />
+    <ClInclude Include="CrashComponent.h" />
     <ClInclude Include="EmptyGameObject.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Game.h" />

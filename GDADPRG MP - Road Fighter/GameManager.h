@@ -2,6 +2,7 @@
 #include "AGameObject.h"
 #include "stdafx.h"
 #include "PlayerInput.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -18,13 +19,19 @@ public:
 	float getScore();
 	float getFuel();
 
+	bool crashed();
+	void setCrashState(bool value);
+
+	void setPlayer(Player* player);
+	void resetPlayer();
+
 private:
 	int fuel = 100;
 	int speed = 0.f;
 	float score = 0.f;
 
-	float fuelTicks;
-	float scoreTicks;
+	float fuelTicks = 0.f;
+	float scoreTicks = 0.f;
 
 	const int SPEED_MULTIPLIER = 150;
 	const int MAX_SPEED = 400;
@@ -36,6 +43,9 @@ private:
 	const float SCORE_INTERVAL = 2.5f;
 	const int SCORE_ADD = 50;
 
+	bool crash = false;
+
 	PlayerInput* playerInput = NULL;
+	Player* player;
 };
 

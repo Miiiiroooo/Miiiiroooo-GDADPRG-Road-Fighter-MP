@@ -34,6 +34,8 @@ void GameScene::onLoadObjects()
 	Player* player = new Player("Player");
 	this->registerObject(player);
 
+	gameManager->setPlayer(player);
+
 	AScene::onLoadObjects();
 
 }

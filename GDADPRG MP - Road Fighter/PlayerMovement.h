@@ -1,5 +1,7 @@
 #pragma once
 #include "AComponent.h"
+#include "GameManager.h"
+#include "GameObjectManager.h"
 
 class PlayerMovement : public AComponent
 {
@@ -11,6 +13,7 @@ public:
 
 private:
 	const float SPEED_MULTIPLIER = 400.0f;
+	GameManager* gameManager;
 
 };
 

@@ -2,10 +2,12 @@
 #include "PlayerMovement.h"
 #include "PlayerInput.h"
 #include "Player.h"
+#include "GameManager.h"
+#include "GameObjectManager.h"
 
 PlayerMovement::PlayerMovement(std::string name) : AComponent(name, AComponent::ComponentType::Script)
 {
-
+	gameManager = (GameManager*)GameObjectManager::getInstance()->findObjectByName("GameManager");
 }
 
 
@@ -25,6 +27,11 @@ void PlayerMovement::perform()
 	if (playerTransformable == NULL || inputController == NULL)
 	{
 		std::cout << "One or more of the needed dependencies are missing!\n";
+		return;
+	}
+
+	if (gameManager->crashed())
+	{
 		return;
 	}
 

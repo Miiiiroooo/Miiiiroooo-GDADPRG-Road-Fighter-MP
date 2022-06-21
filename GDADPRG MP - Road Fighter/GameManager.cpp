@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameManager.h"
-
+#include "GameObjectManager.h"
+#include "Game.h"
 
 GameManager::GameManager(string name) :AGameObject(name)
 {
@@ -72,4 +73,26 @@ float GameManager::getScore()
 float GameManager::getFuel()
 {
 	return fuel;
+}
+
+bool GameManager::crashed()
+{
+	return this->crash;
+}
+
+void GameManager::setCrashState(bool value)
+{
+	this->crash = value;
+}
+
+void GameManager::setPlayer(Player* player)
+{
+	this->player = player;
+}
+
+void GameManager::resetPlayer()
+{
+	this->crash = false;
+	player->setNormalTexture();
+	player->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, player->getTransformable()->getPosition().y);
 }

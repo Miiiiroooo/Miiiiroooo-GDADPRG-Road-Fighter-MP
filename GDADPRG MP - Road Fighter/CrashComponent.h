@@ -7,17 +7,18 @@
 #include "GameManager.h"
 #include "GameObjectManager.h"
 
+
 using namespace std;
 
-class BackgroundScroll : public AComponent
+class CrashComponent : public AComponent
 {
 public:
-	BackgroundScroll(string name);
-	~BackgroundScroll();
+	CrashComponent(string name);
+	~CrashComponent();
 	void perform();
 
 private:
-	float SPEED_MULTIPLIER = 0.f;
 	GameManager* gameManager;
+	float ticks;
 };
 
