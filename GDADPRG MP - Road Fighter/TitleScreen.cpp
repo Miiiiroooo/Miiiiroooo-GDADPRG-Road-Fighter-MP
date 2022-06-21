@@ -32,29 +32,33 @@ void TitleScreen::initialize()
 	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("button_unpressed");
 
 	
-	UIButton* button1 = new UIButton("button_Yes", btnNormal, btnPressed);
+	UIButton* button1 = new UIButton("play_button", btnNormal, btnPressed);
 	this->attachChild(button1);
+	button1->setParent(this);
+	button1->setButtonListener(this);
 	button1->setPosition(0, 225);
 	button1->getTransformable()->setScale(0.3f, 0.3f);
 
-	UIText* button1_text = new UIText("text1");
-	button1->attachChild(button1_text);
-	button1_text->setPosition(0, 0);
-	button1_text->setSize(100);
-	button1_text->setText("Play");
-	button1->setButtonListener(this);
+	UIText* button1_Text = new UIText("text_1");
+	button1->attachChild(button1_Text);
+	button1_Text->setParent(button1);
+	button1_Text->setPosition(0, -40);
+	button1_Text->setSize(100);
+	button1_Text->setText("PLAY");
 
-	UIButton* button2 = new UIButton("button_No", btnNormal, btnPressed);
+	UIButton* button2 = new UIButton("exit_button", btnNormal, btnPressed);
 	this->attachChild(button2);
+	button2->setParent(this);
+	button2->setButtonListener(this);
 	button2->setPosition(0, 300);
 	button2->getTransformable()->setScale(0.3f, 0.3f);
 
-	UIText* button2_text = new UIText("text2");
-	button2->attachChild(button2_text);
-	button2_text->setPosition(0, 0);
-	button2_text->setSize(100);
-	button2_text->setText("Quit");
-	button2->setButtonListener(this);
+	UIText* button2_Text = new UIText("text_1");
+	button2->attachChild(button2_Text);
+	button2_Text->setParent(button2);
+	button2_Text->setPosition(0, -40);
+	button2_Text->setSize(100);
+	button2_Text->setText("EXIT");
 	
 }
 

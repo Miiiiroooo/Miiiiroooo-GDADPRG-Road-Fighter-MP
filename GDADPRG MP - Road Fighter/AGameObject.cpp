@@ -137,6 +137,7 @@ sf::Transformable* AGameObject::getTransformable()
 
 sf::Transform AGameObject::getGlobalTransform()
 {
+	//cout << "GetGlobalTransform of: " << this->getName() << endl;
 	AGameObject* parentObj = this;
 	vector<AGameObject*> parentList;
 	while (parentObj != NULL)
