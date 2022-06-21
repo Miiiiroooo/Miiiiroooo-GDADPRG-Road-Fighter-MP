@@ -11,7 +11,7 @@ class SceneManager : sf::NonCopyable
 public:
 	static SceneManager* getInstance();
 
-	void resgiterScene(AScene* scene);
+	void registerScene(AScene* scene);
 	void loadScene(std::string sceneName);
 	void unloadScene();
 	void checkLoadScene();

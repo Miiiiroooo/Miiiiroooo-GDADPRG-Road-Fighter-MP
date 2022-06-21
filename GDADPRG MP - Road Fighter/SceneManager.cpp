@@ -3,7 +3,7 @@
 
 
 // static declarations of the SceneManager Class
-std::string SceneManager::MAIN_MENU_SCREEN_NAME = "MainMenuScreen";
+std::string SceneManager::MAIN_MENU_SCREEN_NAME = "MainMenuScene";
 std::string SceneManager::LEVEL_ONE_COURSE_ONE_NAME = "LevelOne_CourseOne";
 std::string SceneManager::LEVEL_ONE_COURSE_TWO_NAME = "LevelOne_CourseTwo";
 std::string SceneManager::LEVEL_TWO_COURSE_ONE_NAME = "LevelTwo_CourseOne";
@@ -21,7 +21,7 @@ SceneManager* SceneManager::getInstance()
 
 
 // public methods of the SceneManager Class
-void SceneManager::resgiterScene(AScene* scene)
+void SceneManager::registerScene(AScene* scene)
 {
 	this->storedScenes[scene->getSceneName()] = scene;
 }

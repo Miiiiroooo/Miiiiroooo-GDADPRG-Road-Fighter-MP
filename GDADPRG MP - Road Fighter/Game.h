@@ -5,6 +5,7 @@
 #include "GameObjectManager.h"
 #include "SFXManager.h"
 #include "PhysicsManager.h"
+#include "FontManager.h"
 
 class Game
 {

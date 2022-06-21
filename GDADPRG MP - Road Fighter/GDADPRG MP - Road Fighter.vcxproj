@@ -168,6 +168,7 @@
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="GenericInputController.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainMenuScene.cpp" />
     <ClCompile Include="ObjectPoolHolder.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -180,6 +181,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TitleScreen.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIButtonInputController.cpp" />
     <ClCompile Include="UIText.cpp" />
@@ -199,6 +201,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="GenericInputController.h" />
+    <ClInclude Include="MainMenuScene.h" />
     <ClInclude Include="ObjectPoolHolder.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="Renderer.h" />
@@ -206,9 +209,17 @@
     <ClInclude Include="SFXManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TitleScreen.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIButtonInputController.h" />
     <ClInclude Include="UIText.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Media\Additional Files\LoadAdditionalTextures.txt" />
+    <Text Include="Media\Additional Files\LoadAudio.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Additional Files\RoadFighterSpriteSheet.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,7 +12,7 @@ public:
 	virtual void onLoadResources() = 0;
 	virtual void onLoadObjects() = 0;
 	virtual void onUnloadResources() = 0;
-	virtual void onUnloadObjects();
+	virtual void onUnloadObjects() = 0;
 
 	std::string getSceneName();
 

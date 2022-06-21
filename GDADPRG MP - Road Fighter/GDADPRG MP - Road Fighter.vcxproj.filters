@@ -138,6 +138,12 @@
     <ClCompile Include="ObjectPoolHolder.cpp">
       <Filter>Source Files\Object Pooling</Filter>
     </ClCompile>
+    <ClCompile Include="TitleScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -212,5 +218,18 @@
     <ClInclude Include="ObjectPoolHolder.h">
       <Filter>Header Files\Object Pooling</Filter>
     </ClInclude>
+    <ClInclude Include="TitleScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Media\Additional Files\LoadAdditionalTextures.txt" />
+    <Text Include="Media\Additional Files\LoadAudio.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Additional Files\RoadFighterSpriteSheet.json" />
   </ItemGroup>
 </Project>

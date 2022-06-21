@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "AGameObject.h"
+#include <vector>
+
+using namespace std;
 
 
 // constructor and destructor of the AGameObject Class
@@ -135,8 +138,7 @@ sf::Transformable* AGameObject::getTransformable()
 sf::Transform AGameObject::getGlobalTransform()
 {
 	AGameObject* parentObj = this;
-	std::vector<AGameObject*> parentList;
-
+	vector<AGameObject*> parentList;
 	while (parentObj != NULL)
 	{
 		parentList.push_back(parentObj);
@@ -144,13 +146,11 @@ sf::Transform AGameObject::getGlobalTransform()
 	}
 
 	sf::Transform transform = sf::Transform::Identity;
-	int startIndx = (int)parentList.size() - 1;
-
-	for (int i = startIndx; i >= 0; i--)
+	int startIdx = parentList.size() - 1;
+	for (int i = startIdx; i >= 0; i--)
 	{
 		transform = transform * parentList[i]->getTransformable()->getTransform();
 	}
-
 	return transform;
 }
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "AScene.h"
-//#include "GameObjectManager.h"
+#include "GameObjectManager.h"
 
 
 // constructor and destructor of the AScene Class
@@ -32,5 +32,20 @@ std::string AScene::getSceneName()
 // protected methods of the AScene Class
 void AScene::registerObject(AGameObject* object)
 {
-	//GameObjectManager::getInstance()->addObject(object);
+	GameObjectManager::getInstance()->addObject(object);
+}
+
+void AScene::onLoadObjects()
+{
+
+}
+
+void AScene::onLoadResources()
+{
+
+}
+
+void AScene::onUnloadResources()
+{
+
 }

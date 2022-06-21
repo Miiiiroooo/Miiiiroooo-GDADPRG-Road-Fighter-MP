@@ -1,12 +1,18 @@
 #include "stdafx.h"
 #include "Game.h"
-
+#include "MainMenuScene.h"
 
 // constructor and destructor of the Game Class
 Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighter")
 {
 	m_Window.setFramerateLimit(60);
 	srand(time(NULL));
+
+	TextureManager::getInstance()->loadAll();
+	FontManager::getInstance()->loadAll();
+
+	SceneManager::getInstance()->registerScene(new MainMenuScene());
+	SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
 }
 
 
