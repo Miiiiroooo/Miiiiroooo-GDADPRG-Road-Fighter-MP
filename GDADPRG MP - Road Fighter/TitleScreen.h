@@ -3,7 +3,6 @@
 #include "ButtonListener.h"
 #include "UIButton.h"
 #include "UIText.h"
-#include "stdafx.h"
 
 using namespace std;
 
@@ -19,6 +18,5 @@ public:
 	void onButtonReleased(UIButton* button);
 	
 private:
-	AGameObject* levelSelect = NULL;
 };
 

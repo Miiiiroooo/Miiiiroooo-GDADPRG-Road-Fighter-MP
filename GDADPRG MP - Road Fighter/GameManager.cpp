@@ -2,6 +2,8 @@
 #include "GameManager.h"
 #include "GameObjectManager.h"
 #include "Game.h"
+#include "GameScreen.h"
+#include "UIText.h"
 
 GameManager::GameManager(string name) :AGameObject(name)
 {
@@ -17,47 +19,61 @@ void GameManager::initialize()
 {
 	playerInput = new PlayerInput("PlayerInput");
 	this->attachComponent(playerInput);
-
 }
 
 void GameManager::update(sf::Time deltaTime)
 {
-	
-	//Speed
-	if (playerInput->isW() && speed < MAX_SPEED)
+	if (!checkGameOver()) // not yet game over
 	{
-		speed += SPEED_MULTIPLIER * deltaTime.asSeconds();
-	}
-	else if (playerInput->isW() && speed > MAX_SPEED)
-	{
-		speed = MAX_SPEED;
-	}
-	else if (!playerInput->isW() && speed > 0)
-	{
-		speed -= (SPEED_MULTIPLIER) * deltaTime.asSeconds();
-	}
-	else if(speed < 0)
-	{
-		speed = 0;
-	}
+		//Speed
+		if (crash)
+		{
+			speed = speed;
+		}
+		else if (playerInput->isW() && speed < MAX_SPEED)
+		{
+			speed += SPEED_MULTIPLIER * deltaTime.asSeconds();
+		}
+		else if (playerInput->isW() && speed > MAX_SPEED)
+		{
+			speed = MAX_SPEED;
+		}
+		else if (!playerInput->isW() && speed > 0)
+		{
+			speed -= (SPEED_MULTIPLIER) * deltaTime.asSeconds();
+		}
+		else if(speed < 0)
+		{
+			speed = 0;
+		}
 
-	//cout << "speed: " << speed << endl;
+		//FUEL
+		fuelTicks += deltaTime.asSeconds();
+		if (fuelTicks > FUEL_DRAIN_INTERVAL && !crash && speed != 0)
+		{
+			fuelTicks = 0.f;
+			fuel -= FUEL_DRAIN;
+		}
 
-	//FUEL
-	fuelTicks += deltaTime.asSeconds();
-	if (fuelTicks > FUEL_DRAIN_INTERVAL)
-	{
-		fuelTicks = 0.f;
-		fuel -= FUEL_DRAIN;
+		//SCORE
+		scoreTicks += deltaTime.asSeconds();
+		if (scoreTicks > SCORE_INTERVAL && !crash && speed != 0)
+		{
+			scoreTicks = 0.f;
+			score += SCORE_ADD;
+		}
+
+		// DISTANCE
+		if (!this->crash)
+		{
+			travelledDistance += speed * deltaTime.asSeconds();
+		}
 	}
-
-	scoreTicks += deltaTime.asSeconds();
-	if (scoreTicks > SCORE_INTERVAL)
+	else // game over
 	{
-		scoreTicks = 0.f;
-		score += SCORE_ADD;
+		GameScreen* gameScreen = (GameScreen*)GameObjectManager::getInstance()->findObjectByName("GameScreen");
+		gameScreen->onGameOver();
 	}
-
 }
 
 int GameManager::getSpeed()
@@ -75,6 +91,16 @@ float GameManager::getFuel()
 	return fuel;
 }
 
+int GameManager::getDistance()
+{
+	return travelledDistance;
+}
+
+int GameManager::getNumLives()
+{
+	return numLives;
+}
+
 bool GameManager::crashed()
 {
 	return this->crash;
@@ -85,6 +111,11 @@ void GameManager::setCrashState(bool value)
 	this->crash = value;
 }
 
+bool GameManager::checkGameOver()
+{
+	return (fuel <= 0 || numLives <= 0);
+}
+
 void GameManager::setPlayer(Player* player)
 {
 	this->player = player;
@@ -93,6 +124,12 @@ void GameManager::setPlayer(Player* player)
 void GameManager::resetPlayer()
 {
 	this->crash = false;
+	this->numLives -= 1;
+	this->speed = 0;
+	this->score -= 500;
+	if (this->score < 0)
+		score = 0;
+
 	player->setNormalTexture();
 	player->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, player->getTransformable()->getPosition().y);
 }

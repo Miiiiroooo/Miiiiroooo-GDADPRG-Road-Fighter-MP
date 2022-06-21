@@ -1,15 +1,15 @@
 #pragma once
+
 #include "AScene.h"
-class MainMenuScene : public AScene
+
+class LoadingScene : public AScene
 {
 public:
-	MainMenuScene();
-	~MainMenuScene();
+	LoadingScene();
+	~LoadingScene();
 
 	void onLoadResources();
 	void onLoadObjects();
 	void onUnloadResources();
-private:
-
 };
 

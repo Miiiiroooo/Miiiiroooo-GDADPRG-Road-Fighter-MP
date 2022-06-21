@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "TitleScreen.h"
 #include "Game.h"
+#include "BlackScreen.h"
 
 TitleScreen::TitleScreen(string name) : AGameObject(name), ButtonListener()
 {
@@ -14,7 +15,7 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::initialize()
 {
-	std::cout << "Declared as " << this->name << endl;
+	//std::cout << "Declared as " << this->name << endl;
 	sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("GameLogo"));
 
@@ -28,8 +29,8 @@ void TitleScreen::initialize()
 	render->assignDrawable(sprite);
 	this->attachComponent(render);
 
-	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("button_pressed");
-	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("button_unpressed");
+	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("button_released");
+	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("button_pressed");
 
 	
 	UIButton* button1 = new UIButton("play_button", btnNormal, btnPressed);
@@ -37,7 +38,7 @@ void TitleScreen::initialize()
 	button1->setParent(this);
 	button1->setButtonListener(this);
 	button1->setPosition(0, 225);
-	button1->getTransformable()->setScale(0.3f, 0.3f);
+	button1->getTransformable()->setScale(0.6f, 0.6f);
 
 	UIText* button1_Text = new UIText("text_1");
 	button1->attachChild(button1_Text);
@@ -51,7 +52,7 @@ void TitleScreen::initialize()
 	button2->setParent(this);
 	button2->setButtonListener(this);
 	button2->setPosition(0, 300);
-	button2->getTransformable()->setScale(0.3f, 0.3f);
+	button2->getTransformable()->setScale(0.6f, 0.6f);
 
 	UIText* button2_Text = new UIText("text_1");
 	button2->attachChild(button2_Text);
@@ -64,15 +65,16 @@ void TitleScreen::initialize()
 
 void TitleScreen::onButtonClick(UIButton* button)
 {
-	cout << button->getName() << " pressed!" << endl;
+	//cout << button->getName() << " pressed!" << endl;
 }
 
 void TitleScreen::onButtonReleased(UIButton* button)
 {
-	cout << button->getName() << " release!" << endl;
+	//cout << button->getName() << " release!" << endl;
 	if (button->getName() == "play_button")
 	{
-		SceneManager::getInstance()->loadScene(SceneManager::LEVEL_ONE_COURSE_ONE_NAME);
+		BlackScreen* blackScreen = new BlackScreen("BlackScreen", SceneManager::COURSE_ONE_NAME);
+		GameObjectManager::getInstance()->addObject(blackScreen);
 	}
 	
 }

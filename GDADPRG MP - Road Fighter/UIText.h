@@ -12,7 +12,8 @@ public:
 
 	void initialize();
 	void setText(std::string text);
-	std::string getText();
+	sf::Text* getText();
+	std::string getString();
 	void setSize(unsigned int size);
 
 

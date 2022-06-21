@@ -37,12 +37,12 @@ void PlayerMovement::perform()
 
 	// movement
 	sf::Vector2f offset(0.0f, 0.0f);
-	if (inputController->isA())
+	if (inputController->isA() && !gameManager->checkGameOver())
 	{
 		offset.x -= this->SPEED_MULTIPLIER;
 	}
 		
-	if (inputController->isD()) 
+	if (inputController->isD() && !gameManager->checkGameOver())
 	{
 		offset.x += this->SPEED_MULTIPLIER;
 	}

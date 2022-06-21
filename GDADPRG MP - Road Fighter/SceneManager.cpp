@@ -3,11 +3,10 @@
 
 
 // static declarations of the SceneManager Class
+std::string SceneManager::LOADING_SCREEN_NAME = "LoadingScene";
 std::string SceneManager::MAIN_MENU_SCREEN_NAME = "MainMenuScene";
-std::string SceneManager::LEVEL_ONE_COURSE_ONE_NAME = "LevelOne_CourseOne";
-std::string SceneManager::LEVEL_ONE_COURSE_TWO_NAME = "LevelOne_CourseTwo";
-std::string SceneManager::LEVEL_TWO_COURSE_ONE_NAME = "LevelTwo_CourseOne";
-std::string SceneManager::LEVEL_TWO_COURSE_TWO_NAME = "LevelTwo_CourseTwo";
+std::string SceneManager::COURSE_ONE_NAME = "CourseOne";
+std::string SceneManager::COURSE_TWO_NAME = "CourseTwo";
 
 SceneManager* SceneManager::sharedInstance = NULL;
 

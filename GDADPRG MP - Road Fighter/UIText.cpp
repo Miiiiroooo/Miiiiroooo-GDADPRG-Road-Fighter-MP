@@ -26,7 +26,7 @@ void UIText::initialize()
 	this->setSize(40);
 	this->setText("<Using placeholder!>");
 
-	Renderer* renderer = new Renderer("Button");
+	Renderer* renderer = new Renderer("UIText");
 	renderer->assignDrawable(text);
 	this->attachComponent(renderer);
 }
@@ -42,7 +42,13 @@ void UIText::setText(std::string text)
 }
 
 
-std::string UIText::getText()
+sf::Text* UIText::getText()
+{
+	return this->text;
+}
+
+
+std::string UIText::getString()
 {
 	return this->text->getString();
 }

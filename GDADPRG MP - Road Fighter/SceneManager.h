@@ -24,11 +24,10 @@ private:
 // attributes of the SceneManager Class
 public:
 	// scene names
+	static std::string LOADING_SCREEN_NAME;
 	static std::string MAIN_MENU_SCREEN_NAME;
-	static std::string LEVEL_ONE_COURSE_ONE_NAME;
-	static std::string LEVEL_ONE_COURSE_TWO_NAME;
-	static std::string LEVEL_TWO_COURSE_ONE_NAME;
-	static std::string LEVEL_TWO_COURSE_TWO_NAME;
+	static std::string COURSE_ONE_NAME;
+	static std::string COURSE_TWO_NAME;
 	
 private:
 	static SceneManager* sharedInstance;

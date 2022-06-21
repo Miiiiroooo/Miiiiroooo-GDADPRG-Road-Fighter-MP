@@ -19,7 +19,7 @@ Background::~Background()
 
 void Background::initialize()
 {
-	std::cout << "Declared as " << this->name << endl;
+	//std::cout << "Declared as " << this->name << endl;
 	sprite = new sf::Sprite();
 	TextureManager::getInstance()->getTexture("background")->setRepeated(true);
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("background"));

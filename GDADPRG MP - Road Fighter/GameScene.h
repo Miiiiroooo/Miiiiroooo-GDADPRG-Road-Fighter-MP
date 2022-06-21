@@ -11,9 +11,5 @@ public:
 	void onLoadResources();
 	void onLoadObjects();
 	void onUnloadResources();
-	void onUnloadObjects();
-
-private:
-
 };
 

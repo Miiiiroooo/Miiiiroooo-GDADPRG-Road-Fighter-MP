@@ -162,18 +162,26 @@
     <ClCompile Include="AScene.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BackgroundScroll.cpp" />
+    <ClCompile Include="BasicUIObject.cpp" />
+    <ClCompile Include="BlackScreen.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CrashComponent.cpp" />
     <ClCompile Include="EmptyGameObject.cpp" />
+    <ClCompile Include="FadingTextBehavior.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
+    <ClCompile Include="GameOverBehavior.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GenericInputController.cpp" />
+    <ClCompile Include="LoadingScene.cpp" />
+    <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScene.cpp" />
+    <ClCompile Include="MiniRoad.cpp" />
     <ClCompile Include="ObjectPoolHolder.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -181,6 +189,7 @@
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ScreenTransitionBehavior.cpp" />
     <ClCompile Include="SFXManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -192,6 +201,7 @@
     <ClCompile Include="TitleScreen.cpp" />
     <ClCompile Include="UIButton.cpp" />
     <ClCompile Include="UIButtonInputController.cpp" />
+    <ClCompile Include="UIGameManager.cpp" />
     <ClCompile Include="UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,19 +212,27 @@
     <ClInclude Include="AScene.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BackgroundScroll.h" />
+    <ClInclude Include="BasicUIObject.h" />
+    <ClInclude Include="BlackScreen.h" />
     <ClInclude Include="ButtonListener.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionListener.h" />
     <ClInclude Include="CrashComponent.h" />
     <ClInclude Include="EmptyGameObject.h" />
+    <ClInclude Include="FadingTextBehavior.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameObjectPool.h" />
+    <ClInclude Include="GameOverBehavior.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GenericInputController.h" />
+    <ClInclude Include="LoadingScene.h" />
+    <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="MainMenuScene.h" />
+    <ClInclude Include="MiniRoad.h" />
     <ClInclude Include="ObjectPoolHolder.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="Player.h" />
@@ -222,12 +240,14 @@
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ScreenTransitionBehavior.h" />
     <ClInclude Include="SFXManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TitleScreen.h" />
     <ClInclude Include="UIButton.h" />
     <ClInclude Include="UIButtonInputController.h" />
+    <ClInclude Include="UIGameManager.h" />
     <ClInclude Include="UIText.h" />
   </ItemGroup>
   <ItemGroup>

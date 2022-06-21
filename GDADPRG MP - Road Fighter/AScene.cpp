@@ -33,18 +33,3 @@ void AScene::registerObject(AGameObject* object)
 {
 	GameObjectManager::getInstance()->addObject(object);
 }
-
-void AScene::onLoadObjects()
-{
-
-}
-
-void AScene::onLoadResources()
-{
-
-}
-
-void AScene::onUnloadResources()
-{
-
-}

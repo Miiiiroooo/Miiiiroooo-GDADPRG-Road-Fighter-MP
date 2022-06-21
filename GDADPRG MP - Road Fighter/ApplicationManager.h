@@ -6,6 +6,7 @@ public:
 	static ApplicationManager* getInstance();
 	void initialize(sf::RenderWindow* targetWindow);
 	void applicationQuit();
+
 	void pauseApplication();
 	void resumeApplication();
 	bool isPaused();
