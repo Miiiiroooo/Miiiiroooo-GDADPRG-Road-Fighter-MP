@@ -10,6 +10,7 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 
 	TextureManager::getInstance()->loadAll();
 	FontManager::getInstance()->loadAll();
+	SFXManager::getInstance()->loadAll();
 
 	SceneManager::getInstance()->registerScene(new MainMenuScene());
 	SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
