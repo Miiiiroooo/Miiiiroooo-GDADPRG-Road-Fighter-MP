@@ -70,4 +70,9 @@ void TitleScreen::onButtonClick(UIButton* button)
 void TitleScreen::onButtonReleased(UIButton* button)
 {
 	cout << button->getName() << " release!" << endl;
+	if (button->getName() == "play_button")
+	{
+		SceneManager::getInstance()->loadScene(SceneManager::LEVEL_ONE_COURSE_ONE_NAME);
+	}
+	
 }

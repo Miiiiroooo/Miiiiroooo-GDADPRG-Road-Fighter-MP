@@ -15,11 +15,10 @@ AScene::~AScene()
 
 }
 
-
 // public methods of the AScene Class
 void AScene::onUnloadObjects()
 {
-	//GameObjectManager::getInstance()->deleteAllObjectsInScene();
+	GameObjectManager::getInstance()->deleteAllObjectsInScene();
 }
 
 

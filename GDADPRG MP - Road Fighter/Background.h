@@ -1,0 +1,19 @@
+#pragma once
+#include "AGameObject.h"
+#include "GameManager.h"
+
+class Background : public AGameObject
+{
+public:
+	Background(std::string name);
+	~Background();
+
+	void initialize();
+	
+
+
+private:
+	
+
+};
+

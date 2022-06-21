@@ -33,6 +33,7 @@ AGameObject::~AGameObject()
 	if (this->parent != NULL)
 		this->parent = NULL;
 	if (this->sprite != NULL)
+		this->sprite = NULL;
 		delete this->sprite;
 	if (this->texture != NULL)
 		delete this->texture;

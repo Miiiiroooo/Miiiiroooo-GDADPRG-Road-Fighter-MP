@@ -11,3 +11,4 @@ GoalHUD     Media/UI/goal_hud.png
 SpeedHUD     Media/UI/speed_hud.png
 button_pressed Media/UI/button_pressed.png
 button_unpressed Media/UI/button_unpressed.png
+background Media/Textures/level_one.png

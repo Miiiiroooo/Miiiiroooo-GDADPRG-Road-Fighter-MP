@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "TextureManager.h"
+#include <iostream>
 
+using namespace std;
 
 // static declarations of the TextureManager Class
 TextureManager* TextureManager::sharedInstance = NULL;
@@ -76,6 +78,7 @@ void TextureManager::loadSpriteSheet()
 		sf::Texture* texture = new sf::Texture();
 		texture->loadFromFile("Media/Textures/RoadFighterSpriteSheet.png", rect);  // takes more time to load up
 		textureMap[itr->name.GetString()] = texture;
+
 	}
 }
 
