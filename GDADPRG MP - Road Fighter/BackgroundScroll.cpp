@@ -17,6 +17,7 @@ void BackgroundScroll::perform()
 {
 	GameManager* gameManager = (GameManager*)GameObjectManager::getInstance()->findObjectByName("GameManager");
 	SPEED_MULTIPLIER = gameManager->getSpeed();
+
 	float scrollSpeed;
 
 	if (SPEED_MULTIPLIER < 0)
