@@ -13,6 +13,8 @@ public:
 	void initialize();
 	void initTexture();
 
+	float getCarSpeed();
+
 	void onRelease();
 	void onActivate();
 	APoolable* clone();
@@ -24,6 +26,10 @@ public:
 
 private:
 	std::vector<sf::Texture*> enemyCarsTextureList;
+
+	std::vector<float> carSpeedList;
+	float carSpeed = 0.0f;
+
 	bool crashed = false;
 	Collider* collider = NULL;
 };

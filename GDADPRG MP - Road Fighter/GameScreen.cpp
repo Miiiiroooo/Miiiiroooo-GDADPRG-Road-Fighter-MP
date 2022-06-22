@@ -15,7 +15,7 @@
 #include "EmptyGameObject.h"
 
 #include "ObstacleSpawner.h"
-#include "EnemyCarSpawner.h"\
+#include "EnemyCarSpawner.h"
 
 #include "CrashComponent.h"
 
@@ -40,24 +40,18 @@ void GameScreen::initialize()
 	this->gameManager = new GameManager("GameManager");
 	GameObjectManager::getInstance()->addObject(gameManager);
 
-	UIGameManager* UIManager = new UIGameManager("UIGameManager");
-	GameObjectManager::getInstance()->addObject(UIManager);
-
 	Background* background = new Background("Background");
 	background->setTexture(TextureManager::getInstance()->getTexture("background"));
 	GameObjectManager::getInstance()->addObject(background);
 
+	UIGameManager* UIManager = new UIGameManager("UIGameManager");
+	GameObjectManager::getInstance()->addObject(UIManager);
+
 	Player* player = new Player("Player");
-	
-	
 	GameObjectManager::getInstance()->addObject(player);
 	this->gameManager->setPlayer(player);
 
-	//set road hitbox
-	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
-	crashComponent->setRoadEdges(500, 790);
-
-
+	
 	// init spawners for enemies and obstacles
 	EmptyGameObject* spawner = new EmptyGameObject("Spawner");
 	this->attachChild(spawner);
@@ -66,9 +60,16 @@ void GameScreen::initialize()
 	spawner->attachComponent(obstacleSpawner);
 	obstacleSpawner->attachOwner(spawner);
 
-	EnemyCarSpawner* enemyCarSpawner = new EnemyCarSpawner("EnemyCarSpawner", 3);
+	EnemyCarSpawner* enemyCarSpawner = new EnemyCarSpawner("EnemyCarSpawner", 10);
 	spawner->attachComponent(enemyCarSpawner);
 	enemyCarSpawner->attachOwner(spawner);
+
+
+	//set road hitbox
+	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
+	crashComponent->setRoadEdges(500, 790);
+	obstacleSpawner->setRoadEdges(525, 775);
+	enemyCarSpawner->setRoadEdges(525, 775);
 
 
 	// init Physics

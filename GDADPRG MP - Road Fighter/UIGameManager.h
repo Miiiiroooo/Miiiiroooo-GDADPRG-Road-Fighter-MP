@@ -29,5 +29,6 @@ private:
 	UIText* scoreText = NULL;
 	UIText* speedText = NULL;
 	UIText* fuelText = NULL;
+	BasicUIObject* goalLine = NULL;
 };
 

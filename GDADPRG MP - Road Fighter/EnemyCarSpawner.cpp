@@ -32,16 +32,28 @@ void EnemyCarSpawner::perform()
 	{
 		int randNum = rand() % 10;
 
-		if (randNum < 3)  // 30 % chance obstacle spawn after cooldown
+		if (randNum < 4)  // 40 % chance obstacle spawn after cooldown
 		{
 			posLastSpawn += gameManager->getDistance() - posLastSpawn;
 			APoolable* poolableObj = enemyCarPool->requestPoolable();
 
-			if (poolableObj != NULL) // when obstacle spawn, make PhysicsManager track the object
+			if (poolableObj != NULL) 
 			{
+				// set position of the poolable object
+				int randX = rand() % (rightEdge - leftEdge) + leftEdge;
+				poolableObj->setPosition(randX, -75);
+
+				// update phsyics manager
 				Collider* collider = (Collider*)poolableObj->findComponentByName("EnemyCarCollider");
 				PhysicsManager::getInstance()->trackObject(collider);
 			}
 		}
 	}
+}
+
+
+void EnemyCarSpawner::setRoadEdges(int left, int right)
+{
+	this->leftEdge = left;
+	this->rightEdge = right;
 }

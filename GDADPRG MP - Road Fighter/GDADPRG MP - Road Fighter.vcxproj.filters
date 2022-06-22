@@ -220,10 +220,10 @@
       <Filter>Source Files\Object Pooling</Filter>
     </ClCompile>
     <ClCompile Include="GameScene_2.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="GameScreen_2.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Screens</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -372,13 +372,13 @@
       <Filter>Header Files\Components\Scripts</Filter>
     </ClInclude>
     <ClInclude Include="EnemyCarObject.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\Object Pooling</Filter>
     </ClInclude>
     <ClInclude Include="GameScene_2.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="GameScreen_2.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

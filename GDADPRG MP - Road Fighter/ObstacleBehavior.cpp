@@ -24,7 +24,7 @@ void ObstacleBehavior::perform()
 	gameManager = (GameManager*)GameObjectManager::getInstance()->findObjectByName("GameManager");
 	ObstacleObject* obstacle = (ObstacleObject*)this->getOwner();
 
-	// check for car crash
+	// check if any car crashed on the obstacle
 	if (obstacle->hasBeenCrashed())
 	{
 		crashDuration += deltaTime.asSeconds();
@@ -46,7 +46,7 @@ void ObstacleBehavior::perform()
 		obstaclePool->releasePoolable(obstacle);
 	}
 
-	// check if car stopped before spawning an object
+	// check if player has been crashed before spawning an object
 	else if (!gameManager->crashed() && gameManager->getSpeed() != 0)
 	{
 		float SPEED_MULTIPLIER = gameManager->getSpeed();

@@ -2,12 +2,19 @@
 #include "EnemyCarObject.h"
 #include "EnemyCarBehavior.h"
 #include "PhysicsManager.h"
+#include "ObjectPoolHolder.h"
 
 
 // constructor and destructor of the ObstacleObject Class
 EnemyCarObject::EnemyCarObject(std::string name) : APoolable(name)
 {
-
+	this->carSpeedList = {
+		150.0f,
+		250.0f,
+		375.0f,
+		450.0f,
+		575.0f
+	};
 }
 
 
@@ -20,28 +27,10 @@ EnemyCarObject::~EnemyCarObject()
 // public methods of the ObstacleObject Class
 void EnemyCarObject::initialize()
 {
-	// init all appropriate textures for the obstacles
-	std::vector<std::string> textureKeyList = {
-		"enemy_cyan_0.png",
-		"enemy_cyan_1.png",
-		"enemy_cyan_2.png",
-		"enemy_cyan_3.png",
-		"enemy_red_0.png",
-		"enemy_red_1.png",
-		"enemy_red_2.png",
-		"enemy_red_3.png",
-		"enemy_yellow_0.png",
-		"enemy_yellow_1.png",
-		"enemy_yellow_2.png",
-		"enemy_yellow_3.png",
-	};
-
-	for (int i = 0; i < textureKeyList.size(); i++)
-		this->enemyCarsTextureList.push_back(TextureManager::getInstance()->getTexture(textureKeyList[i]));
-
+	initTexture();
 
 	// randomly assign a texture from the vector
-	int index = rand() % textureKeyList.size();
+	int index = rand() % enemyCarsTextureList.size();
 	this->sprite = new sf::Sprite();
 	this->sprite->setTexture(*enemyCarsTextureList[index]);
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
@@ -68,14 +57,37 @@ void EnemyCarObject::initialize()
 
 void EnemyCarObject::initTexture()
 {
+	// init all appropriate textures for the obstacles
+	std::vector<std::string> textureKeyList = {
+		"enemy_cyan_0.png",
+		"enemy_cyan_1.png",
+		"enemy_cyan_2.png",
+		"enemy_cyan_3.png",
+		"enemy_red_0.png",
+		"enemy_red_1.png",
+		"enemy_red_2.png",
+		"enemy_red_3.png",
+		"enemy_yellow_0.png",
+		"enemy_yellow_1.png",
+		"enemy_yellow_2.png",
+		"enemy_yellow_3.png",
+	};
 
+	for (int i = 0; i < textureKeyList.size(); i++)
+		this->enemyCarsTextureList.push_back(TextureManager::getInstance()->getTexture(textureKeyList[i]));
+}
+
+
+float EnemyCarObject::getCarSpeed()
+{
+	return this->carSpeed;
 }
 
 
 void EnemyCarObject::onRelease()
 {
 	// set new texture AND update size before object gets activated
-	int index = rand() % 4;
+	int index = rand() % enemyCarsTextureList.size();
 	this->sprite->setTexture(*enemyCarsTextureList[index]);
 
 	sf::Vector2u textureSize = enemyCarsTextureList[index]->getSize();
@@ -83,16 +95,19 @@ void EnemyCarObject::onRelease()
 	this->sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 
 
+	// set new car speed
+	index = rand() % carSpeedList.size();
+	this->carSpeed = carSpeedList[index];
+
+
 	// update physics managers
-	PhysicsManager::getInstance()->untrackObject((Collider*)this->findComponentByName("ObstacleCollider"));
+	PhysicsManager::getInstance()->untrackObject(this->collider);
 }
 
 
 void EnemyCarObject::onActivate()
 {
-	// init position from 525 until 775
-	int randX = rand() % (775 - 525) + 525;
-	this->setPosition(randX, 0);
+	
 }
 
 
@@ -111,9 +126,23 @@ bool EnemyCarObject::hasBeenCrashed()
 
 void EnemyCarObject::onCollisionEnter(AGameObject* contact)
 {
+	// if crashed onto player, do default crashed updates
 	if (contact->getName().find("Player") != std::string::npos && !crashed)
 	{
 		crashed = true;
+	}
+
+	// else if car crashed onto other poolable objects, make self be released from pool
+	else if ((contact->getName().find("EnemyCar") != std::string::npos && contact->isEnabled()) || contact->getName().find("Obstacle") != std::string::npos)
+	{
+		GameObjectPool* enemyCarPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::ENEMY_CAR_POOL_TAG);
+		enemyCarPool->releasePoolable((APoolable*)this);
+	}
+
+	// else if contact has already been released from pool, retain the current one and reconfigure the collider settings
+	else if (contact->getName().find("EnemyCar") != std::string::npos && !contact->isEnabled())
+	{
+		this->collider->setAlreadyCollided(false);
 	}
 }
 
@@ -121,5 +150,4 @@ void EnemyCarObject::onCollisionEnter(AGameObject* contact)
 void EnemyCarObject::onCollisionExit(AGameObject* gameObject)
 {
 	crashed = false;
-
 }

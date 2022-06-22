@@ -20,20 +20,10 @@ ObstacleObject::~ObstacleObject()
 // public methods of the ObstacleObject Class
 void ObstacleObject::initialize()
 {
-	// init all appropriate textures for the obstacles
-	std::vector<std::string> textureKeyList = {
-		"obstacle_manhole.png",
-		"barrel_cyan.png",
-		"barrel_red.png",
-		"barrel_yellow.png"
-	};
-
-	for (int i = 0; i < 4; i++)
-		this->obstacleTextureList.push_back(TextureManager::getInstance()->getTexture(textureKeyList[i]));
-
+	initTexture();
 
 	// randomly assign a texture from the vector
-	int index = rand() % 4;
+	int index = rand() % obstacleTextureList.size();
 	this->sprite = new sf::Sprite();
 	this->sprite->setTexture(*obstacleTextureList[index]);
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
@@ -60,7 +50,16 @@ void ObstacleObject::initialize()
 
 void ObstacleObject::initTexture()
 {
+	// init all appropriate textures for the obstacles
+	std::vector<std::string> textureKeyList = {
+		"obstacle_manhole.png",
+		"barrel_cyan.png",
+		"barrel_red.png",
+		"barrel_yellow.png"
+	};
 
+	for (int i = 0; i < 4; i++)
+		this->obstacleTextureList.push_back(TextureManager::getInstance()->getTexture(textureKeyList[i]));
 }
 
 
@@ -76,15 +75,13 @@ void ObstacleObject::onRelease()
 
 
 	// update physics managers
-	PhysicsManager::getInstance()->untrackObject((Collider*)this->findComponentByName("ObstacleCollider"));
+	PhysicsManager::getInstance()->untrackObject(this->collider);
 }
 
 
 void ObstacleObject::onActivate()
 {
-	// init position from 525 until 775
-	int randX = rand() % (775 - 525) + 525;
-	this->setPosition(randX, -600);
+
 }
 
 
