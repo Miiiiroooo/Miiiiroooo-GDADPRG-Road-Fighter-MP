@@ -67,7 +67,7 @@ bool Player::hasCarCrashed()
 
 void Player::onCollisionEnter(AGameObject* contact)
 {
-	if (contact->getName().find("Obstacle") != std::string::npos && !carCrash)
+	if ((contact->getName().find("EnemyCar") != std::string::npos || contact->getName().find("Obstacle") != std::string::npos) && !carCrash)
 	{
 		carCrash = true;
 

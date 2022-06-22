@@ -92,7 +92,7 @@ void EnemyCarObject::onActivate()
 {
 	// init position from 525 until 775
 	int randX = rand() % (775 - 525) + 525;
-	this->setPosition(randX, -600);
+	this->setPosition(randX, 0);
 }
 
 

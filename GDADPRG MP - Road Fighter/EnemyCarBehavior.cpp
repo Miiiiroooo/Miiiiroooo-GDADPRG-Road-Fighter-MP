@@ -47,20 +47,11 @@ void EnemyCarBehavior::perform()
 	}
 
 	// check if car stopped before spawning an object
-	else if (!gameManager->crashed() && gameManager->getSpeed() != 0)
+	else if (!gameManager->crashed())
 	{
-		float SPEED_MULTIPLIER = gameManager->getSpeed();
-		float scrollSpeed;
+		float player_speed = gameManager->getSpeed();
+		float car_speed = 1.6 * player_speed - SPEED_MULTIPLIER;
 
-		if (SPEED_MULTIPLIER < 0)
-		{
-			scrollSpeed = 0;
-		}
-		else
-		{
-			scrollSpeed = pow(SPEED_MULTIPLIER, 0.9);
-		}
-
-		enemyCar->getTransformable()->move(0, scrollSpeed * deltaTime.asSeconds());
+		enemyCar->getTransformable()->move(0, car_speed * deltaTime.asSeconds());
 	}
 }

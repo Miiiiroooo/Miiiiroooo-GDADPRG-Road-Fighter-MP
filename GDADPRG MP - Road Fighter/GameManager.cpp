@@ -88,11 +88,6 @@ int GameManager::getDistance()
 	return travelledDistance;
 }
 
-int GameManager::getNumLives()
-{
-	return numLives;
-}
-
 bool GameManager::crashed()
 {
 	return this->crash;
@@ -105,7 +100,7 @@ void GameManager::setCrashState(bool value)
 
 bool GameManager::checkGameOver()
 {
-	return (fuel <= 0 || numLives <= 0);
+	return (fuel <= 0);
 }
 
 void GameManager::setPlayer(Player* player)
@@ -116,8 +111,7 @@ void GameManager::setPlayer(Player* player)
 void GameManager::resetPlayer()
 {
 	this->crash = false;
-
-	this->numLives -= 1;
+	this->fuel -= 10;
 	this->speed = 0;
 
 	this->score -= 500;

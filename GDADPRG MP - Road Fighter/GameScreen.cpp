@@ -57,12 +57,10 @@ void GameScreen::initialize()
 	spawner->attachComponent(obstacleSpawner);
 	obstacleSpawner->attachOwner(spawner);
 
-	// FIX COLLISION FOR CARS
-	/*
 	EnemyCarSpawner* enemyCarSpawner = new EnemyCarSpawner("EnemyCarSpawner", 3);
 	spawner->attachComponent(enemyCarSpawner);
 	enemyCarSpawner->attachOwner(spawner);
-	*/
+
 
 	// init Physics
 	EmptyGameObject* physicsManager = new EmptyGameObject("PhysicsManager");

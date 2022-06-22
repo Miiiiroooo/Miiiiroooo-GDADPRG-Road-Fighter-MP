@@ -64,12 +64,6 @@ void UIGameManager::initialize()
 	this->attachChild(this->fuelText);
 	this->fuelText->setSize(50);
 	this->fuelText->setText("000");
-
-	this->livesText = new UIText("LivesText");
-	this->livesText->getTransformable()->setPosition(1100, 500);
-	this->attachChild(this->livesText);
-	this->livesText->setSize(50);
-	updateLives();
 }
 
 
@@ -79,7 +73,6 @@ void UIGameManager::update(sf::Time deltaTIme)
 	updateScore();
 	updateSpeed();
 	updateFuel();
-	updateLives();
 }
 
 
@@ -149,14 +142,4 @@ void UIGameManager::updateFuel()
 	text += std::to_string(fuel);
 
 	this->fuelText->setText(text);
-}
-
-
-void UIGameManager::updateLives()
-{
-	int numLives = gameManager->getNumLives();
-	std::string text = "Lives  ";
-	text += std::to_string(numLives);
-
-	this->livesText->setText(text);
 }

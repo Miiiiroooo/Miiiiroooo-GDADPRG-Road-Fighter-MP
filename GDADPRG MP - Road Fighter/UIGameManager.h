@@ -21,7 +21,6 @@ public:
 	void updateScore();
 	void updateSpeed();
 	void updateFuel();
-	void updateLives();
 
 // attributes
 private:
@@ -30,6 +29,5 @@ private:
 	UIText* scoreText = NULL;
 	UIText* speedText = NULL;
 	UIText* fuelText = NULL;
-	UIText* livesText = NULL;
 };
 

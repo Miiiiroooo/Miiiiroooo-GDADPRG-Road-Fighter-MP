@@ -23,8 +23,16 @@ ObstacleSpawner::~ObstacleSpawner()
 
 
 // public methods of the ObstacleSpawner Class
+
+// idea is that the obstacles will spawn on the last third of the course itself
+// if player is about to reach end, it increasingly becomes difficult to reach
 void ObstacleSpawner::perform()
 {
+	if (gameManager->getDistance() <= 24000) // if player is still significantly far from the end, dont spawn obstacles yet
+	{
+		return;
+	}
+
 	GameObjectPool* obstaclePool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::OBSTACLE_POOL_TAG);
 
 	bool ifSpawn = gameManager->getDistance() - posLastSpawn > MAX_DISTANCE_SPAWN;

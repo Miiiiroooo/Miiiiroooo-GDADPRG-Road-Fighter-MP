@@ -19,7 +19,6 @@ public:
 	float getScore();
 	float getFuel();
 	int getDistance();
-	int getNumLives();
 
 	bool crashed();
 	void setCrashState(bool value);
@@ -47,8 +46,6 @@ private:
 	const int SCORE_ADD = 50;
 
 	bool crash = false;
-
-	int numLives = 5;
 
 	int travelledDistance = 0;
 	const int maxDistance = 36000;

@@ -14,6 +14,7 @@ public:
 
 private:
 	GameManager* gameManager = NULL;
+	const float SPEED_MULTIPLIER = 400.0f;
 	float crashDuration;
 };
 
