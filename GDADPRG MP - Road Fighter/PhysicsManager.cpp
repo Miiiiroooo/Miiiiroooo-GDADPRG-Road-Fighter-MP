@@ -34,12 +34,16 @@ void PhysicsManager::trackObject(Collider* object)
 	object->setAlreadyCollided(false);
 
 	this->trackedObjects.push_back(object);
+
+	//std::cout << "TRACKED: " << trackedObjects.back()->getOwner()->getName() << "  " << trackedObjects.back() << std::endl;
 }
 
 
 void PhysicsManager::untrackObject(Collider* object)
 {
 	this->forCleaningObjects.push_back(object);
+
+	//std::cout << "CLEANED: " <<  forCleaningObjects.back()->getOwner()->getName() << "  " << forCleaningObjects.back() << std::endl;
 }
 
 
@@ -49,15 +53,8 @@ void PhysicsManager::perform()
 	{
 		for (size_t j = 0; j < this->trackedObjects.size(); j++)
 		{
-			
-			cout << trackedObjects[i]->getName() << endl;
-			
-
 			if (this->trackedObjects[i] != this->trackedObjects[j] && this->trackedObjects[i]->getOwner()->isEnabled() && this->trackedObjects[j]->getOwner()->isEnabled())
 			{
-				//std::cout << this->trackedObjects.size() << " " << this->trackedObjects[i]->willCollide(this->trackedObjects[j]) << " " << !this->trackedObjects[i]->alreadyCollided() << " " << !this->trackedObjects[j]->alreadyCollided() << std::endl;
-				
-
 				// check collision between two objects 
 				if (this->trackedObjects[i]->willCollide(this->trackedObjects[j]) && !this->trackedObjects[i]->alreadyCollided() && !this->trackedObjects[j]->alreadyCollided())
 				{
@@ -95,8 +92,8 @@ void PhysicsManager::cleanUpObjects()
 {
 	for (size_t i = 0; i < this->forCleaningObjects.size(); i++)
 	{
-		//std::cout << this->trackedObjects[i]->getOwner()->getName() << " has been cleaned" << std::endl;
-		this->trackedObjects.erase(this->trackedObjects.begin() + i);
+		//std::cout << this->forCleaningObjects[i]->getOwner()->getName() << " has been cleaned" << std::endl;
+		this->forCleaningObjects.erase(this->forCleaningObjects.begin() + i);
 	}
 
 	this->forCleaningObjects.clear();

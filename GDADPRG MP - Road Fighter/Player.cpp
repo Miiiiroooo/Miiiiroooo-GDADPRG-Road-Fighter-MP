@@ -73,13 +73,17 @@ void Player::onCollisionEnter(AGameObject* contact)
 
 		Collider* playerCollider = (Collider*)this->findComponentByName("PlayerCollider");
 		PhysicsManager::getInstance()->untrackObject(playerCollider);
-
-		cout << "Collision with: " << contact->getName() << endl;
 	}
 }
 
 
 void Player::onCollisionExit(AGameObject* gameObject)
 {
+	if (carCrash)
+	{
+		Collider* playerCollider = (Collider*)this->findComponentByName("PlayerCollider");
+		PhysicsManager::getInstance()->trackObject(playerCollider);
+	}
+
 	carCrash = false;
 }

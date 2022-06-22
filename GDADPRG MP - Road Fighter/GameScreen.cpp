@@ -64,7 +64,6 @@ void GameScreen::initialize()
 	enemyCarSpawner->attachOwner(spawner);
 	*/
 
-
 	// init Physics
 	EmptyGameObject* physicsManager = new EmptyGameObject("PhysicsManager");
 	this->attachChild(physicsManager);

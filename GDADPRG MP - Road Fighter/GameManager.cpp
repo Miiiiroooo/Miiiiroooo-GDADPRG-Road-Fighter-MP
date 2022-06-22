@@ -126,7 +126,4 @@ void GameManager::resetPlayer()
 
 	player->setNormalTexture();
 	player->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, player->getTransformable()->getPosition().y);
-
-	Collider* playerCollider = (Collider*)player->findComponentByName("PlayerCollider");
-	PhysicsManager::getInstance()->trackObject(playerCollider);
 }
