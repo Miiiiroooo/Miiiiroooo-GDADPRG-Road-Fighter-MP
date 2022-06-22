@@ -35,6 +35,7 @@ void Player::initialize()
 	this->attachComponent(playerMovement);
 
 	CrashComponent* crashComponent = new CrashComponent("CrashComponent");
+	//crashComponent->setRoadEdges(500, 790);
 	this->attachComponent(crashComponent);
 	
 	Renderer* renderComponent = new Renderer("BGSprite");

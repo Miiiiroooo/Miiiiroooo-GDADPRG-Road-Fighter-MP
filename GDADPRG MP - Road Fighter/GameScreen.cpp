@@ -15,7 +15,9 @@
 #include "EmptyGameObject.h"
 
 #include "ObstacleSpawner.h"
-#include "EnemyCarSpawner.h"
+#include "EnemyCarSpawner.h"\
+
+#include "CrashComponent.h"
 
 // constructor and destructor of the GameScreen Class
 GameScreen::GameScreen(std::string name) : AGameObject(name)
@@ -45,8 +47,14 @@ void GameScreen::initialize()
 	GameObjectManager::getInstance()->addObject(background);
 
 	Player* player = new Player("Player");
+	
+	
 	GameObjectManager::getInstance()->addObject(player);
 	this->gameManager->setPlayer(player);
+
+	//set road hitbox
+	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
+	crashComponent->setRoadEdges(500, 790);
 
 
 	// init spawners for enemies and obstacles

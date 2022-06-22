@@ -17,7 +17,7 @@ void CrashComponent::perform()
 {
 	Player* player = (Player*)this->getOwner();
 
-	if (player->getTransformable()->getPosition().x > 790 || player->getTransformable()->getPosition().x < 500 || player->hasCarCrashed())
+	if (player->getTransformable()->getPosition().x > rightEdge || player->getTransformable()->getPosition().x < leftEdge || player->hasCarCrashed())
 	{
 		//crash
 		ticks += deltaTime.asSeconds();
@@ -32,4 +32,10 @@ void CrashComponent::perform()
 			player->onCollisionExit(NULL);
 		}
 	}
+}
+
+void CrashComponent::setRoadEdges(int left, int right)
+{
+	this->leftEdge = left;
+	this->rightEdge = right;
 }

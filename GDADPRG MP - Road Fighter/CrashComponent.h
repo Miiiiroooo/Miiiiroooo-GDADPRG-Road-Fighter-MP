@@ -14,8 +14,13 @@ public:
 	~CrashComponent();
 	void perform();
 
+	void setRoadEdges(int left, int right);
+
 private:
 	GameManager* gameManager;
 	float ticks;
+
+	int leftEdge = 0;
+	int rightEdge = 0;
 };
 
