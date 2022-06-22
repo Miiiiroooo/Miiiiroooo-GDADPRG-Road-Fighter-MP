@@ -9,7 +9,7 @@
 
 using namespace std;
 
-Player::Player(std::string name) : AGameObject(name)
+Player::Player(std::string name) : AGameObject(name), CollisionListener()
 {
 
 }
@@ -73,6 +73,8 @@ void Player::onCollisionEnter(AGameObject* contact)
 
 		Collider* playerCollider = (Collider*)this->findComponentByName("PlayerCollider");
 		PhysicsManager::getInstance()->untrackObject(playerCollider);
+
+		cout << "Collision with: " << contact->getName() << endl;
 	}
 }
 

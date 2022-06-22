@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "PhysicsManager.h"
 
+#include<iostream>
+
+using namespace std;
+
 
 // static declaration of the PhysicsManager Class
 PhysicsManager* PhysicsManager::sharedInstance = NULL;
@@ -45,9 +49,14 @@ void PhysicsManager::perform()
 	{
 		for (size_t j = 0; j < this->trackedObjects.size(); j++)
 		{
+			
+			cout << trackedObjects[i]->getName() << endl;
+			
+
 			if (this->trackedObjects[i] != this->trackedObjects[j] && this->trackedObjects[i]->getOwner()->isEnabled() && this->trackedObjects[j]->getOwner()->isEnabled())
 			{
 				//std::cout << this->trackedObjects.size() << " " << this->trackedObjects[i]->willCollide(this->trackedObjects[j]) << " " << !this->trackedObjects[i]->alreadyCollided() << " " << !this->trackedObjects[j]->alreadyCollided() << std::endl;
+				
 
 				// check collision between two objects 
 				if (this->trackedObjects[i]->willCollide(this->trackedObjects[j]) && !this->trackedObjects[i]->alreadyCollided() && !this->trackedObjects[j]->alreadyCollided())
