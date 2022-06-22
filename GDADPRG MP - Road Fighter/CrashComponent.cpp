@@ -17,8 +17,6 @@ void CrashComponent::perform()
 {
 	Player* player = (Player*)this->getOwner();
 
-
-	cout << player->getTransformable()->getPosition().x << endl;
 	if (player->getTransformable()->getPosition().x > rightEdge || player->getTransformable()->getPosition().x < leftEdge || player->hasCarCrashed())
 	{
 		//crash
@@ -30,7 +28,6 @@ void CrashComponent::perform()
 		{
 			ticks = 0.f;
 			gameManager->resetPlayer();
-
 			player->onCollisionExit(NULL);
 		}
 	}

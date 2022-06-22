@@ -194,6 +194,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
+    <ClCompile Include="PlayerSoundHandler.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ScreenTransitionBehavior.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerInput.h" />
     <ClInclude Include="PlayerMovement.h" />
+    <ClInclude Include="PlayerSoundHandler.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ScreenTransitionBehavior.h" />

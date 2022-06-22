@@ -15,9 +15,11 @@
 #include "EmptyGameObject.h"
 
 #include "ObstacleSpawner.h"
-#include "EnemyCarSpawner.h"\
+#include "EnemyCarSpawner.h"
 
 #include "CrashComponent.h"
+
+#include "PlayerSoundHandler.h"
 
 // constructor and destructor of the GameScreen Class
 GameScreen::GameScreen(std::string name) : AGameObject(name)
@@ -108,6 +110,7 @@ void GameScreen::onGameOver()
 {
 	if (!isGameOver) // a flag that prevents repetitive declarations of the following objects and components
 	{
+
 		UIText* gameOverText = new UIText("GameOver");
 		GameObjectManager::getInstance()->addObject(gameOverText);
 		gameOverText->setParent(this);
@@ -115,12 +118,18 @@ void GameScreen::onGameOver()
 		gameOverText->setText("GAME\nOVER");
 		gameOverText->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);
 
-		/*
+		
 		sf::SoundBuffer* buffer = SFXManager::getInstance()->getAudio("GameOver");
 		this->gameOverTune = new sf::Sound();
 		gameOverTune->setBuffer(*buffer);
 		gameOverTune->play();
-		*/
+		
+		PlayerSoundHandler* soundHandler = (PlayerSoundHandler*)GameObjectManager::getInstance()->findObjectByName("Player")->findComponentByName("SoundHandler");
+		if (soundHandler == nullptr)
+		{
+			cout << "null";
+		}
+		soundHandler->EnableSound(false);
 
 		isGameOver = true;
 	}

@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "PlayerInput.h"
 #include "PlayerMovement.h"
+#include "PlayerSoundHandler.h"
 #include "CrashComponent.h"
 
 
@@ -47,6 +48,10 @@ void Player::initialize()
 	this->collider->setCollisionListener(this);
 	this->attachComponent(collider);
 	this->collider->attachOwner(this);
+
+	PlayerSoundHandler* playerSound = new PlayerSoundHandler("SoundHandler");
+	this->attachComponent(playerSound);
+
 }
 
 void Player::setNormalTexture()

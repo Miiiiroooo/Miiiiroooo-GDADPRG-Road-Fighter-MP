@@ -47,7 +47,7 @@ void GameManager::update(sf::Time deltaTime)
 
 	//FUEL
 	fuelTicks += deltaTime.asSeconds();
-	if (fuelTicks > FUEL_DRAIN_INTERVAL && !crash && speed != 0)
+	if (fuelTicks > FUEL_DRAIN_INTERVAL && !crash && speed != 0 && fuel > 0)
 	{
 		fuelTicks = 0.f;
 		fuel -= FUEL_DRAIN;

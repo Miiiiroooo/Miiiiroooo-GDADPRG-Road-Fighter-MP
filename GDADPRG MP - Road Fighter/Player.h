@@ -3,6 +3,7 @@
 #include "AGameObject.h"
 #include "CollisionListener.h"
 #include "Collider.h"
+#include "PlayerSoundHandler.h"
 
 class Player : public AGameObject, public CollisionListener
 {
@@ -18,6 +19,7 @@ public:
 	void onCollisionEnter(AGameObject* contact);
 	void onCollisionExit(AGameObject* gameObject);
 
+
 private:
 	const float SPEED_MULTIPLIER = 100.0f;
 	sf::Texture* normalTexture;
@@ -25,5 +27,6 @@ private:
 		
 	bool carCrash = false;
 	Collider* collider;
+
 };
 

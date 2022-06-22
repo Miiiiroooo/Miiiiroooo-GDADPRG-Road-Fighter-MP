@@ -9,7 +9,7 @@
 // constructor and destructor of the Game Class
 Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighter")
 {
-	m_Window.setFramerateLimit(60);
+	m_Window.setFramerateLimit(140);
 	srand(time(NULL));
 
 	ApplicationManager::getInstance()->initialize(&m_Window);
@@ -24,7 +24,7 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	SceneManager::getInstance()->registerScene(new GameScene_2());
 
 	//SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
-	SceneManager::getInstance()->loadScene(SceneManager::COURSE_TWO_NAME);
+	SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
 }
 
 

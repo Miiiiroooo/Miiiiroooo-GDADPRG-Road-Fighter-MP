@@ -19,6 +19,7 @@
 
 #include "CrashComponent.h"
 
+
 // constructor and destructor of the GameScreen Class
 GameScreen_2::GameScreen_2(std::string name) : AGameObject(name)
 {
@@ -48,10 +49,9 @@ void GameScreen_2::initialize()
 	GameObjectManager::getInstance()->addObject(background);
 
 	Player* player = new Player("Player");
-
-
 	GameObjectManager::getInstance()->addObject(player);
 	this->gameManager->setPlayer(player);
+	
 
 	//set road hitbox
 	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
@@ -114,12 +114,17 @@ void GameScreen_2::onGameOver()
 		gameOverText->setText("GAME\nOVER");
 		gameOverText->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);
 
-		/*
 		sf::SoundBuffer* buffer = SFXManager::getInstance()->getAudio("GameOver");
 		this->gameOverTune = new sf::Sound();
 		gameOverTune->setBuffer(*buffer);
 		gameOverTune->play();
-		*/
+
+		PlayerSoundHandler* soundHandler = (PlayerSoundHandler*)GameObjectManager::getInstance()->findObjectByName("Player")->findComponentByName("SoundHandler");
+		if (soundHandler == nullptr)
+		{
+			cout << "null";
+		}
+		soundHandler->EnableSound(false);
 
 		isGameOver = true;
 	}
