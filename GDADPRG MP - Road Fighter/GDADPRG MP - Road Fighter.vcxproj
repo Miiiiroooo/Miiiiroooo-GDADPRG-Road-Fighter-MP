@@ -177,7 +177,9 @@
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameObjectPool.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameScene_2.cpp" />
     <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="GameScreen_2.cpp" />
     <ClCompile Include="GenericInputController.cpp" />
     <ClCompile Include="LoadingScene.cpp" />
     <ClCompile Include="LoadingScreen.cpp" />
@@ -234,7 +236,9 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameObjectPool.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameScene_2.h" />
     <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="GameScreen_2.h" />
     <ClInclude Include="GenericInputController.h" />
     <ClInclude Include="LoadingScene.h" />
     <ClInclude Include="LoadingScreen.h" />

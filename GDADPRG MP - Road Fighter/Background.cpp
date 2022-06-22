@@ -20,9 +20,8 @@ Background::~Background()
 void Background::initialize()
 {
 	//std::cout << "Declared as " << this->name << endl;
-	sprite = new sf::Sprite();
-	TextureManager::getInstance()->getTexture("background")->setRepeated(true);
-	sprite->setTexture(*TextureManager::getInstance()->getTexture("background"));
+	
+	//sprite->setTexture(*TextureManager::getInstance()->getTexture("background"));
 	
 
 	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
@@ -39,4 +38,11 @@ void Background::initialize()
 	Renderer* render = new Renderer("BG");
 	render->assignDrawable(sprite);
 	this->attachComponent(render);
+}
+
+void Background::setTexture(sf::Texture* texture)
+{
+	sprite = new sf::Sprite();
+	texture->setRepeated(true);
+	sprite->setTexture(*texture);
 }

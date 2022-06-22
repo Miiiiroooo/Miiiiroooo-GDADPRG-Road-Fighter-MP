@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "GameScreen.h"
+#include "GameScreen_2.h"
 
 #include "Game.h"
 #include "GameManager.h"
@@ -20,13 +20,13 @@
 #include "CrashComponent.h"
 
 // constructor and destructor of the GameScreen Class
-GameScreen::GameScreen(std::string name) : AGameObject(name)
+GameScreen_2::GameScreen_2(std::string name) : AGameObject(name)
 {
 
 }
 
 
-GameScreen::~GameScreen()
+GameScreen_2::~GameScreen_2()
 {
 	delete this->gameOverTune;
 	this->gameOverTune = NULL;
@@ -34,7 +34,7 @@ GameScreen::~GameScreen()
 
 
 // public methods of the GameScreen Class
-void GameScreen::initialize()
+void GameScreen_2::initialize()
 {
 	// basic objects needed for gameplay
 	this->gameManager = new GameManager("GameManager");
@@ -44,18 +44,18 @@ void GameScreen::initialize()
 	GameObjectManager::getInstance()->addObject(UIManager);
 
 	Background* background = new Background("Background");
-	background->setTexture(TextureManager::getInstance()->getTexture("background"));
+	background->setTexture(TextureManager::getInstance()->getTexture("CourseTwo"));
 	GameObjectManager::getInstance()->addObject(background);
 
 	Player* player = new Player("Player");
-	
-	
+
+
 	GameObjectManager::getInstance()->addObject(player);
 	this->gameManager->setPlayer(player);
 
 	//set road hitbox
 	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
-	crashComponent->setRoadEdges(500, 790);
+	crashComponent->setRoadEdges(540, 740);
 
 
 	// init spawners for enemies and obstacles
@@ -82,7 +82,7 @@ void GameScreen::initialize()
 }
 
 
-void GameScreen::update(sf::Time deltaTime)
+void GameScreen_2::update(sf::Time deltaTime)
 {
 	if (!gameManager->checkGameOver())
 	{
@@ -104,7 +104,7 @@ void GameScreen::update(sf::Time deltaTime)
 }
 
 
-void GameScreen::onGameOver()
+void GameScreen_2::onGameOver()
 {
 	if (!isGameOver) // a flag that prevents repetitive declarations of the following objects and components
 	{
@@ -127,7 +127,7 @@ void GameScreen::onGameOver()
 }
 
 
-void GameScreen::onTrasition()
+void GameScreen_2::onTrasition()
 {
 	BlackScreen* blackScreen = new BlackScreen("BlackScreen", SceneManager::MAIN_MENU_SCREEN_NAME);
 	GameObjectManager::getInstance()->addObject(blackScreen);

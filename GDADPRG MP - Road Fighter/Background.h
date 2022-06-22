@@ -9,7 +9,7 @@ public:
 	~Background();
 
 	void initialize();
-	
+	void setTexture(sf::Texture* texture);
 
 
 private:

@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "MainMenuScene.h"
 #include "GameScene.h"
+#include "GameScene_2.h"
 #include "LoadingScene.h"
 #include "ApplicationManager.h"
 
@@ -20,9 +21,10 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	SceneManager::getInstance()->registerScene(new LoadingScene());
 	SceneManager::getInstance()->registerScene(new MainMenuScene());
 	SceneManager::getInstance()->registerScene(new GameScene());
+	SceneManager::getInstance()->registerScene(new GameScene_2());
 
 	//SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
-	SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
+	SceneManager::getInstance()->loadScene(SceneManager::COURSE_TWO_NAME);
 }
 
 
