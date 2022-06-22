@@ -4,6 +4,8 @@
 
 // static declarations of the ObjectPoolHolder Class
 ObjectPoolHolder* ObjectPoolHolder::sharedInstance = NULL;
+std::string ObjectPoolHolder::OBSTACLE_POOL_TAG = "ObstaclePool";
+std::string ObjectPoolHolder::ENEMY_CAR_POOL_TAG = "EnemyCarPool";
 
 ObjectPoolHolder* ObjectPoolHolder::getInstance()
 {

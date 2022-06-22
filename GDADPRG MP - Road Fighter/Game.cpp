@@ -19,8 +19,8 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	SceneManager::getInstance()->registerScene(new MainMenuScene());
 	SceneManager::getInstance()->registerScene(new GameScene());
 
-	SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
-	//SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
+	//SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
+	SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
 }
 
 
@@ -50,11 +50,6 @@ void Game::run()
 
 		render();
 		SceneManager::getInstance()->checkLoadScene();
-
-		/*
-		if (SceneManager::getInstance()->isSceneLoaded(SceneManager::GAME_SCENE_NAME))
-			PhysicsManager::getInstance()->perform();
-		*/
 	}
 }
 

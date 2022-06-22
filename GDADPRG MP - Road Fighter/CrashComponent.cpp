@@ -16,9 +16,8 @@ CrashComponent::~CrashComponent()
 void CrashComponent::perform()
 {
 	Player* player = (Player*)this->getOwner();
-	//cout << "X: " << player->getTransformable()->getPosition().x << " Y: " << player->getTransformable()->getPosition().y << endl;
 
-	if (player->getTransformable()->getPosition().x > 790 || player->getTransformable()->getPosition().x < 500)
+	if (player->getTransformable()->getPosition().x > 790 || player->getTransformable()->getPosition().x < 500 || player->hasCarCrashed())
 	{
 		//crash
 		ticks += deltaTime.asSeconds();
@@ -29,6 +28,8 @@ void CrashComponent::perform()
 		{
 			ticks = 0.f;
 			gameManager->resetPlayer();
+
+			player->onCollisionExit(NULL);
 		}
 	}
 }

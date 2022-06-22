@@ -23,56 +23,48 @@ void GameManager::initialize()
 
 void GameManager::update(sf::Time deltaTime)
 {
-	if (!checkGameOver()) // not yet game over
+	//Speed
+	if (crash)
 	{
-		//Speed
-		if (crash)
-		{
-			speed = speed;
-		}
-		else if (playerInput->isW() && speed < MAX_SPEED)
-		{
-			speed += SPEED_MULTIPLIER * deltaTime.asSeconds();
-		}
-		else if (playerInput->isW() && speed > MAX_SPEED)
-		{
-			speed = MAX_SPEED;
-		}
-		else if (!playerInput->isW() && speed > 0)
-		{
-			speed -= (SPEED_MULTIPLIER) * deltaTime.asSeconds();
-		}
-		else if(speed < 0)
-		{
-			speed = 0;
-		}
-
-		//FUEL
-		fuelTicks += deltaTime.asSeconds();
-		if (fuelTicks > FUEL_DRAIN_INTERVAL && !crash && speed != 0)
-		{
-			fuelTicks = 0.f;
-			fuel -= FUEL_DRAIN;
-		}
-
-		//SCORE
-		scoreTicks += deltaTime.asSeconds();
-		if (scoreTicks > SCORE_INTERVAL && !crash && speed != 0)
-		{
-			scoreTicks = 0.f;
-			score += SCORE_ADD;
-		}
-
-		// DISTANCE
-		if (!this->crash)
-		{
-			travelledDistance += speed * deltaTime.asSeconds();
-		}
+		speed = speed;
 	}
-	else // game over
+	else if (playerInput->isW() && speed < MAX_SPEED)
 	{
-		GameScreen* gameScreen = (GameScreen*)GameObjectManager::getInstance()->findObjectByName("GameScreen");
-		gameScreen->onGameOver();
+		speed += SPEED_MULTIPLIER * deltaTime.asSeconds();
+	}
+	else if (playerInput->isW() && speed > MAX_SPEED)
+	{
+		speed = MAX_SPEED;
+	}
+	else if (!playerInput->isW() && speed > 0)
+	{
+		speed -= (SPEED_MULTIPLIER) * deltaTime.asSeconds();
+	}
+	else if(speed < 0)
+	{
+		speed = 0;
+	}
+
+	//FUEL
+	fuelTicks += deltaTime.asSeconds();
+	if (fuelTicks > FUEL_DRAIN_INTERVAL && !crash && speed != 0)
+	{
+		fuelTicks = 0.f;
+		fuel -= FUEL_DRAIN;
+	}
+
+	//SCORE
+	scoreTicks += deltaTime.asSeconds();
+	if (scoreTicks > SCORE_INTERVAL && !crash && speed != 0)
+	{
+		scoreTicks = 0.f;
+		score += SCORE_ADD;
+	}
+
+	// DISTANCE
+	if (!this->crash)
+	{
+		travelledDistance += speed * deltaTime.asSeconds();
 	}
 }
 
@@ -124,12 +116,17 @@ void GameManager::setPlayer(Player* player)
 void GameManager::resetPlayer()
 {
 	this->crash = false;
+
 	this->numLives -= 1;
 	this->speed = 0;
+
 	this->score -= 500;
 	if (this->score < 0)
 		score = 0;
 
 	player->setNormalTexture();
 	player->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, player->getTransformable()->getPosition().y);
+
+	Collider* playerCollider = (Collider*)player->findComponentByName("PlayerCollider");
+	PhysicsManager::getInstance()->trackObject(playerCollider);
 }

@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "Player.h"
+
 #include "Game.h"
 #include "PlayerInput.h"
 #include "PlayerMovement.h"
 #include "CrashComponent.h"
 
-#include<iostream>
 
 using namespace std;
 
@@ -40,6 +40,12 @@ void Player::initialize()
 	Renderer* renderComponent = new Renderer("BGSprite");
 	renderComponent->assignDrawable(sprite);
 	this->attachComponent(renderComponent);
+
+	this->collider = new Collider("PlayerCollider");
+	this->collider->setLocalBounds(sprite->getGlobalBounds());
+	this->collider->setCollisionListener(this);
+	this->attachComponent(collider);
+	this->collider->attachOwner(this);
 }
 
 void Player::setNormalTexture()
@@ -53,7 +59,25 @@ void Player::setCrashedTexture()
 }
 
 
+bool Player::hasCarCrashed()
+{
+	return this->carCrash;
+}
 
 
+void Player::onCollisionEnter(AGameObject* contact)
+{
+	if (contact->getName().find("Obstacle") != std::string::npos && !carCrash)
+	{
+		carCrash = true;
+
+		Collider* playerCollider = (Collider*)this->findComponentByName("PlayerCollider");
+		PhysicsManager::getInstance()->untrackObject(playerCollider);
+	}
+}
 
 
+void Player::onCollisionExit(AGameObject* gameObject)
+{
+	carCrash = false;
+}

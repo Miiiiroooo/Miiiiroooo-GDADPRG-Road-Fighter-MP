@@ -22,9 +22,6 @@
     <Filter Include="Source Files\Managers">
       <UniqueIdentifier>{bd766c14-ac3a-4af7-9c42-35832c1a763f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Scenes">
-      <UniqueIdentifier>{5e0ed757-416b-4ec5-8419-bfae93f515b4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Objects">
       <UniqueIdentifier>{16094f41-670e-4d69-9cad-3079a3924f2f}</UniqueIdentifier>
     </Filter>
@@ -72,6 +69,9 @@
     </Filter>
     <Filter Include="Source Files\Screens">
       <UniqueIdentifier>{74ac790b-a6f4-45ef-9543-d121b94f72d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{5e0ed757-416b-4ec5-8419-bfae93f515b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -201,8 +201,23 @@
     <ClCompile Include="BlackScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="GameOverBehavior.cpp">
+    <ClCompile Include="ObstacleSpawner.cpp">
       <Filter>Source Files\Components\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="ObstacleObject.cpp">
+      <Filter>Source Files\Object Pooling</Filter>
+    </ClCompile>
+    <ClCompile Include="ObstacleBehavior.cpp">
+      <Filter>Source Files\Components\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyCarSpawner.cpp">
+      <Filter>Source Files\Components\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyCarBehavior.cpp">
+      <Filter>Source Files\Components\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyCarObject.cpp">
+      <Filter>Source Files\Object Pooling</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -335,8 +350,23 @@
     <ClInclude Include="BlackScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverBehavior.h">
+    <ClInclude Include="ObstacleSpawner.h">
       <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="ObstacleObject.h">
+      <Filter>Header Files\Object Pooling</Filter>
+    </ClInclude>
+    <ClInclude Include="ObstacleBehavior.h">
+      <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCarBehavior.h">
+      <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCarSpawner.h">
+      <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyCarObject.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -104,9 +104,9 @@ void UIGameManager::updateMiniPlayer()
 	// overall, 650 pixels to travel
 
 	float progress = gameManager->getDistance() / 36000.f; // get percentage from distanced travelled and max distance
-	float newPos = 650 - (650 * progress); 
+	float newPos = 650.0f - (650.0f * progress); 
 
-	this->miniPlayer->getTransformable()->setPosition(160, newPos);
+	this->miniPlayer->getTransformable()->setPosition(160.0f, newPos);
 }
 
 

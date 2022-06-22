@@ -1,9 +1,6 @@
 #pragma once
-#include "AComponent.h"
-#include "stdafx.h"
+
 #include"AComponent.h"
-#include"AGameObject.h"
-#include"Game.h"
 #include "GameManager.h"
 #include "GameObjectManager.h"
 
