@@ -57,7 +57,6 @@ void GameScreen_2::initialize()
 	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
 	crashComponent->setRoadEdges(540, 740);
 
-
 	// init spawners for enemies and obstacles
 	EmptyGameObject* spawner = new EmptyGameObject("Spawner");
 	this->attachChild(spawner);

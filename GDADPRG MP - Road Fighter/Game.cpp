@@ -16,7 +16,7 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	TextureManager::getInstance()->loadAll();
 	FontManager::getInstance()->loadAll();
 	TextureManager::getInstance()->loadSpriteSheet();
-	//SFXManager::getInstance()->loadAll();
+	SFXManager::getInstance()->loadAll();
 
 	SceneManager::getInstance()->registerScene(new LoadingScene());
 	SceneManager::getInstance()->registerScene(new MainMenuScene());
@@ -24,7 +24,7 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	SceneManager::getInstance()->registerScene(new GameScene_2());
 
 	//SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
-	SceneManager::getInstance()->loadScene(SceneManager::COURSE_TWO_NAME);
+	SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
 }
 
 
