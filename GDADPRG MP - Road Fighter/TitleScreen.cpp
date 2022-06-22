@@ -2,6 +2,7 @@
 #include "TitleScreen.h"
 #include "Game.h"
 #include "BlackScreen.h"
+#include "ApplicationManager.h"
 
 TitleScreen::TitleScreen(string name) : AGameObject(name), ButtonListener()
 {
@@ -75,6 +76,10 @@ void TitleScreen::onButtonReleased(UIButton* button)
 	{
 		BlackScreen* blackScreen = new BlackScreen("BlackScreen", SceneManager::COURSE_ONE_NAME);
 		GameObjectManager::getInstance()->addObject(blackScreen);
+	}
+	else if (button->getName() == "exit_button")
+	{
+		ApplicationManager::getInstance()->applicationQuit();
 	}
 	
 }

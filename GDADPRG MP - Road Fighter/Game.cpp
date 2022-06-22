@@ -3,6 +3,7 @@
 #include "MainMenuScene.h"
 #include "GameScene.h"
 #include "LoadingScene.h"
+#include "ApplicationManager.h"
 
 // constructor and destructor of the Game Class
 Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighter")
@@ -10,6 +11,7 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	m_Window.setFramerateLimit(60);
 	srand(time(NULL));
 
+	ApplicationManager::getInstance()->initialize(&m_Window);
 	TextureManager::getInstance()->loadAll();
 	FontManager::getInstance()->loadAll();
 	TextureManager::getInstance()->loadSpriteSheet();
