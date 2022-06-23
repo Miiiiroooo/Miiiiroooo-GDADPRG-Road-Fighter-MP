@@ -26,6 +26,8 @@ public:
 	void setCrashState(bool value);
 	bool checkGameOver();
 
+	bool checkGoal();
+
 	void setPlayer(Player* player);
 	void resetPlayer();
 

@@ -27,7 +27,7 @@ void CarFuelBehavior::perform()
 	// check for self-car crash or went out-of-bounds
 	if (carFuel->hasBeenCrashed() || carFuel->getTransformable()->getPosition().y >= 900 || carFuel->getTransformable()->getPosition().y <= -300)
 	{
-		gameManager->addFuel(5);
+		gameManager->addFuel(3);
 		gameManager->addScore(1000);
 
 		GameObjectPool* carFuelPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::CAR_FUEL_POOL_TAG);

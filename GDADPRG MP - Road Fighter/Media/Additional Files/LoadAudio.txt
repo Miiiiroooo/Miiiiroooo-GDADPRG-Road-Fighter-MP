@@ -5,10 +5,4 @@ GameOver     Media/Audio/game_over.wav
 Goal     Media/Audio/goal.wav
 PlayerDeath     Media/Audio/player_death.wav
 PlayerSlowdown     Media/Audio/player_slowdown.wav
-StartCountdown     Media/Audio/start_countdown.wav
-StartGoSignal     Media/Audio/start_go_signal.wav
-StartMusic     Media/Audio/start_music.wav
-CarSpinning     Media/Audio/car_spinning.wav
-Hero     Media/Audio/hero.wav
 PlayerEngine     Media/Audio/player_engine.wav
-Truck     Media/Audio/truck.wav

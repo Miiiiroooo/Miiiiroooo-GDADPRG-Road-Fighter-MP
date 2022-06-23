@@ -51,9 +51,10 @@ void GameManager::update(sf::Time deltaTime)
 	{
 		fuelTicks = 0.f;
 		fuel -= FUEL_DRAIN;
-
-		if (fuel < 0)
-			fuel = 0;
+	}
+	else if (fuel <= 0)
+	{
+		fuel = 0;
 	}
 
 	//SCORE
@@ -114,6 +115,11 @@ void GameManager::setCrashState(bool value)
 bool GameManager::checkGameOver()
 {
 	return (fuel <= 0);
+}
+
+bool GameManager::checkGoal()
+{
+	return (this->travelledDistance > 40000);
 }
 
 void GameManager::setPlayer(Player* player)

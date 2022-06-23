@@ -32,8 +32,17 @@ GameScreen_2::GameScreen_2(std::string name) : AGameObject(name)
 
 GameScreen_2::~GameScreen_2()
 {
-	delete this->gameOverTune;
-	this->gameOverTune = NULL;
+	if (this->goalTune != NULL)
+	{
+		delete this->goalTune;
+		this->goalTune = NULL;
+	}
+
+	if (this->gameOverTune != NULL)
+	{
+		delete this->gameOverTune;
+		this->gameOverTune = NULL;
+	}
 }
 
 
@@ -88,22 +97,69 @@ void GameScreen_2::initialize()
 
 void GameScreen_2::update(sf::Time deltaTime)
 {
-	if (!gameManager->checkGameOver())
+	// check if game is still running
+	if (!gameManager->checkGameOver() && !gameManager->checkGoal())
 	{
 		for (size_t i = 0; i < childList.size(); i++)
 		{
 			childList[i]->update(deltaTime);
 		}
 	}
-	else if (elapsedGameOver > gameOverDuration)
-	{
-		onTrasition();
-	}
-	else
-	{
-		elapsedGameOver += deltaTime;
 
-		onGameOver();
+	// check if player reached goal
+	else if (gameManager->checkGoal())
+	{
+		if (elapsedGoal > goalDuration)
+		{
+			onTrasition();
+		}
+		else
+		{
+			elapsedGoal += deltaTime;
+			onGoal();
+		}
+	}
+
+	// check if gameover
+	else if (gameManager->checkGameOver())
+	{
+		if (elapsedGameOver > gameOverDuration)
+		{
+			onTrasition();
+		}
+		else
+		{
+			elapsedGameOver += deltaTime;
+			onGameOver();
+		}
+	}
+}
+
+
+void GameScreen_2::onGoal()
+{
+	if (!isGoal) // a flag that prevents repetitive declarations of the following objects and components
+	{
+		sf::SoundBuffer* buffer = SFXManager::getInstance()->getAudio("Goal");
+		this->goalTune = new sf::Sound();
+		goalTune->setBuffer(*buffer);
+		goalTune->play();
+
+
+		PlayerSoundHandler* soundHandler = (PlayerSoundHandler*)GameObjectManager::getInstance()->findObjectByName("Player")->findComponentByName("SoundHandler");
+		if (soundHandler == nullptr)
+		{
+			cout << "null";
+		}
+		soundHandler->EnableSound(false);
+
+
+		this->goalUI = new BasicUIObject("GoalUI", "GoalHUD", 0.8f);
+		GameObjectManager::getInstance()->addObject(goalUI);
+		goalUI->setParent(this);
+		goalUI->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2 - 200);
+
+		isGoal = true;
 	}
 }
 
@@ -126,7 +182,7 @@ void GameScreen_2::onGameOver()
 		soundHandler->EnableSound(false);
 
 
-		UIText* gameOverText = new UIText("GameOver");
+		this->gameOverText = new UIText("GameOver");
 		GameObjectManager::getInstance()->addObject(gameOverText);
 		gameOverText->setParent(this);
 		gameOverText->setSize(100);
@@ -140,6 +196,11 @@ void GameScreen_2::onGameOver()
 
 void GameScreen_2::onTrasition()
 {
-	BlackScreen* blackScreen = new BlackScreen("BlackScreen", SceneManager::MAIN_MENU_SCREEN_NAME);
-	GameObjectManager::getInstance()->addObject(blackScreen);
+	if (!isTransition)
+	{
+		BlackScreen* blackScreen = new BlackScreen("BlackScreen", SceneManager::MAIN_MENU_SCREEN_NAME);
+		GameObjectManager::getInstance()->addObject(blackScreen);
+
+		isTransition = true;
+	}
 }

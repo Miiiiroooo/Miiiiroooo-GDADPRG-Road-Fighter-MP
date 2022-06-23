@@ -33,8 +33,17 @@ GameScreen::GameScreen(std::string name) : AGameObject(name)
 
 GameScreen::~GameScreen()
 {
-	delete this->gameOverTune;
-	this->gameOverTune = NULL;
+	if (this->checkpointTune != NULL)
+	{
+		delete this->checkpointTune;
+		this->checkpointTune = NULL;
+	}
+
+	if (this->gameOverTune != NULL)
+	{
+		delete this->gameOverTune;
+		this->gameOverTune = NULL;
+	}
 }
 
 
@@ -94,22 +103,69 @@ void GameScreen::initialize()
 
 void GameScreen::update(sf::Time deltaTime)
 {
-	if (!gameManager->checkGameOver())
+	// check if game still ongoing
+	if (!gameManager->checkGameOver() && !gameManager->checkGoal())
 	{
 		for (size_t i = 0; i < childList.size(); i++)
 		{
 			childList[i]->update(deltaTime);
 		}
 	}
-	else if (elapsedGameOver > gameOverDuration)
-	{
-		onTrasition();
-	}
-	else
-	{
-		elapsedGameOver += deltaTime;
 
-		onGameOver();
+	// check if player reached checkpoint
+	else if (gameManager->checkGoal())
+	{
+		if (elapsedCheckpoint > checkpointDuration)
+		{
+			onTrasition();
+		}
+		else
+		{
+			elapsedCheckpoint += deltaTime;
+			onCheckpoint();
+		}
+	}
+
+	// check if gameover
+	else if (gameManager->checkGameOver())
+	{
+		if (elapsedGameOver > gameOverDuration)
+		{
+			onTrasition();
+		}
+		else
+		{
+			elapsedGameOver += deltaTime;
+			onGameOver();
+		}
+	}
+}
+
+
+void GameScreen::onCheckpoint()
+{
+	if (!isCheckpoint)  // a flag that prevents repetitive declarations of the following objects and components
+	{
+		sf::SoundBuffer* buffer = SFXManager::getInstance()->getAudio("Checkpoint");
+		this->checkpointTune = new sf::Sound();
+		checkpointTune->setBuffer(*buffer);
+		checkpointTune->play();
+
+
+		PlayerSoundHandler* soundHandler = (PlayerSoundHandler*)GameObjectManager::getInstance()->findObjectByName("Player")->findComponentByName("SoundHandler");
+		if (soundHandler == nullptr)
+		{
+			cout << "null";
+		}
+		soundHandler->EnableSound(false);
+
+
+		this->checkpointUI = new BasicUIObject("CheckpointUI", "CheckpointHUD", 0.8f);
+		GameObjectManager::getInstance()->addObject(checkpointUI);
+		checkpointUI->setParent(this);
+		checkpointUI->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2 - 200);
+
+		isCheckpoint = true;
 	}
 }
 
@@ -132,7 +188,7 @@ void GameScreen::onGameOver()
 		soundHandler->EnableSound(false);
 
 
-		UIText* gameOverText = new UIText("GameOver");
+		this->gameOverText = new UIText("GameOver");
 		GameObjectManager::getInstance()->addObject(gameOverText);
 		gameOverText->setParent(this);
 		gameOverText->setSize(100);
@@ -146,6 +202,18 @@ void GameScreen::onGameOver()
 
 void GameScreen::onTrasition()
 {
-	BlackScreen* blackScreen = new BlackScreen("BlackScreen", SceneManager::MAIN_MENU_SCREEN_NAME);
-	GameObjectManager::getInstance()->addObject(blackScreen);
+	std::string sceneToChange;
+	if (gameManager->checkGoal())
+		sceneToChange = SceneManager::COURSE_TWO_NAME;
+	else if (gameManager->checkGameOver())
+		sceneToChange = SceneManager::MAIN_MENU_SCREEN_NAME;
+
+
+	if (!isTransition)
+	{
+		BlackScreen* blackScreen = new BlackScreen("BlackScreen", sceneToChange);
+		GameObjectManager::getInstance()->addObject(blackScreen);
+
+		isTransition = true;
+	}
 }

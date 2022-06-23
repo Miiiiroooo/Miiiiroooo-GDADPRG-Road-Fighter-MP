@@ -28,8 +28,7 @@ void GameObjectManager::processInput(sf::Event event)
 	else
 	{
 		for (size_t i = 0; i < gameObjectList.size(); i++)
-			if (gameObjectList[i]->getName() != "PauseMenuScreen" && gameObjectList[i]->getName() != "QuitMenu")
-				gameObjectList[i]->processInputs(event);
+			gameObjectList[i]->processInputs(event);
 	}
 }
 
@@ -46,8 +45,7 @@ void GameObjectManager::update(sf::Time deltaTime)
 	else
 	{
 		for (size_t i = 0; i < gameObjectList.size(); i++)
-			if (gameObjectList[i]->getName() != "PauseMenuScreen" && gameObjectList[i]->getName() != "QuitMenu")
-				gameObjectList[i]->update(deltaTime);
+			gameObjectList[i]->update(deltaTime);
 	}
 }
 
@@ -55,8 +53,7 @@ void GameObjectManager::update(sf::Time deltaTime)
 void GameObjectManager::draw(sf::RenderWindow* window)
 {
 	for (size_t i = 0; i < gameObjectList.size(); i++)
-		if (gameObjectList[i]->getName() != "PauseMenuScreen" && gameObjectList[i]->getName() != "QuitMenu")
-			gameObjectList[i]->draw(window, sf::RenderStates::Default);
+		gameObjectList[i]->draw(window, sf::RenderStates::Default);
 
 
 	if (ApplicationManager::getInstance()->isPaused())
