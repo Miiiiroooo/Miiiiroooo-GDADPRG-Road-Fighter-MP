@@ -26,7 +26,7 @@ void Player::initialize()
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
 	this->sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 	this->sprite->setScale(0.5f, 0.5f);
-	this->transformable.setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2 + 200);
+	this->transformable.setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2 + 400);
 
 	
 	PlayerInput* playerInput = new PlayerInput("input_control");
@@ -73,6 +73,8 @@ bool Player::hasCarCrashed()
 
 void Player::onCollisionEnter(AGameObject* contact)
 {
+	
+
 	if ((contact->getName().find("EnemyCar") != std::string::npos || contact->getName().find("Obstacle") != std::string::npos) && !carCrash)
 	{
 		carCrash = true;
@@ -87,6 +89,7 @@ void Player::onCollisionEnter(AGameObject* contact)
 
 void Player::onCollisionExit(AGameObject* gameObject)
 {
+	
 	// reset player after car crash
 	PhysicsManager::getInstance()->trackObject(this->collider);
 	carCrash = false;

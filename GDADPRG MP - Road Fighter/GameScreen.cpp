@@ -85,10 +85,10 @@ void GameScreen::initialize()
 
 	//set road hitbox
 	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
-	crashComponent->setRoadEdges(500, 790);
-	obstacleSpawner->setRoadEdges(525, 775);
-	enemyCarSpawner->setRoadEdges(525, 775);
-	fuelSpawner->setRoadEdges(525, 775);
+	crashComponent->setRoadEdges(820, 1100);
+	obstacleSpawner->setRoadEdges(845, 1075);
+	enemyCarSpawner->setRoadEdges(845, 1075);
+	fuelSpawner->setRoadEdges(845, 1075);
 
 
 	// init Physics

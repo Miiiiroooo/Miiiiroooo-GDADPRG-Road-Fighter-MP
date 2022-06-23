@@ -23,8 +23,8 @@ private:
 	
 // attributes of the Game Class
 public:
-	static const int WINDOW_WIDTH = 1280;
-	static const int WINDOW_HEIGHT = 720;
+	static const int WINDOW_WIDTH = 1920;
+	static const int WINDOW_HEIGHT = 1080;
 
 private:
 	const sf::Time TimePerFrame = sf::seconds(1.0f / 60.0f);
