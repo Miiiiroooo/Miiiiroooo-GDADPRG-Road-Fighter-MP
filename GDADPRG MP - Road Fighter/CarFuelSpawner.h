@@ -3,18 +3,18 @@
 #include "AComponent.h"
 #include "GameManager.h"
 
-class EnemyCarSpawner : public AComponent
+class CarFuelSpawner : public AComponent
 {
 public:
-	EnemyCarSpawner(std::string name, int numCars);
-	~EnemyCarSpawner();
+	CarFuelSpawner(std::string name, int numCars);
+	~CarFuelSpawner();
 
 	void perform();
 	void setRoadEdges(int left, int right);
 
 
 private:
-	const float MAX_DISTANCE_SPAWN = 650.0f;
+	const float MAX_DISTANCE_SPAWN = 2750.0f;
 	float posLastSpawn = 0.0f;   // position of the last object spawned
 
 	int leftEdge = 0;

@@ -76,20 +76,18 @@ void Player::onCollisionEnter(AGameObject* contact)
 	if ((contact->getName().find("EnemyCar") != std::string::npos || contact->getName().find("Obstacle") != std::string::npos) && !carCrash)
 	{
 		carCrash = true;
-
-		Collider* playerCollider = (Collider*)this->findComponentByName("PlayerCollider");
-		PhysicsManager::getInstance()->untrackObject(playerCollider);
+		PhysicsManager::getInstance()->untrackObject(this->collider);
+	}
+	else if (contact->getName().find("CarFuel") != std::string::npos)
+	{
+		this->collider->setAlreadyCollided(false);
 	}
 }
 
 
 void Player::onCollisionExit(AGameObject* gameObject)
 {
-	if (carCrash)
-	{
-		Collider* playerCollider = (Collider*)this->findComponentByName("PlayerCollider");
-		PhysicsManager::getInstance()->trackObject(playerCollider);
-	}
-
+	// reset player after car crash
+	PhysicsManager::getInstance()->trackObject(this->collider);
 	carCrash = false;
 }

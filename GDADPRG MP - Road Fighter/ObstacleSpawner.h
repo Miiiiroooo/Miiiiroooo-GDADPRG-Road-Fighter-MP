@@ -10,11 +10,15 @@ public:
 	~ObstacleSpawner();
 
 	void perform();
+	void setRoadEdges(int left, int right);
 
 
 private:
-	const float MAX_DISTANCE_SPAWN = 1000.0f;
+	const float MAX_DISTANCE_SPAWN = 1500.0f;
 	float posLastSpawn = 0.0f;   // position of the last object spawned
+
+	int leftEdge = 0;
+	int rightEdge = 0;
 
 	GameManager* gameManager;
 };

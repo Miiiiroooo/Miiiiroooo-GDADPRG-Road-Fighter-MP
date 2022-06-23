@@ -6,6 +6,7 @@
 ObjectPoolHolder* ObjectPoolHolder::sharedInstance = NULL;
 std::string ObjectPoolHolder::OBSTACLE_POOL_TAG = "ObstaclePool";
 std::string ObjectPoolHolder::ENEMY_CAR_POOL_TAG = "EnemyCarPool";
+std::string ObjectPoolHolder::CAR_FUEL_POOL_TAG = "CarFuelPool";
 
 ObjectPoolHolder* ObjectPoolHolder::getInstance()
 {

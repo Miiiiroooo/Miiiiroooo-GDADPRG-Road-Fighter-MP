@@ -220,13 +220,22 @@
       <Filter>Source Files\Object Pooling</Filter>
     </ClCompile>
     <ClCompile Include="GameScene_2.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="GameScreen_2.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Screens</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSoundHandler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Components\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CarFuelSpawner.cpp">
+      <Filter>Source Files\Components\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CarFuelObject.cpp">
+      <Filter>Source Files\Object Pooling</Filter>
+    </ClCompile>
+    <ClCompile Include="CarFuelBehavior.cpp">
+      <Filter>Source Files\Components\Scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -375,16 +384,25 @@
       <Filter>Header Files\Components\Scripts</Filter>
     </ClInclude>
     <ClInclude Include="EnemyCarObject.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Header Files\Object Pooling</Filter>
     </ClInclude>
     <ClInclude Include="GameScene_2.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="GameScreen_2.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="PlayerSoundHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CarFuelSpawner.h">
+      <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CarFuelObject.h">
+      <Filter>Header Files\Object Pooling</Filter>
+    </ClInclude>
+    <ClInclude Include="CarFuelBehavior.h">
+      <Filter>Header Files\Components\Scripts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighter")
 {
 	m_Window.setFramerateLimit(140);
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 
 	ApplicationManager::getInstance()->initialize(&m_Window);
 	TextureManager::getInstance()->loadAll();
@@ -23,8 +23,8 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	SceneManager::getInstance()->registerScene(new GameScene());
 	SceneManager::getInstance()->registerScene(new GameScene_2());
 
-	//SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
-	SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
+	SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
+	//SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
 }
 
 

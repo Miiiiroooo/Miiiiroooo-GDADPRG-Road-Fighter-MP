@@ -20,24 +20,14 @@ ObstacleObject::~ObstacleObject()
 // public methods of the ObstacleObject Class
 void ObstacleObject::initialize()
 {
-	// init all appropriate textures for the obstacles
-	std::vector<std::string> textureKeyList = {
-		"obstacle_manhole.png",
-		"barrel_cyan.png",
-		"barrel_red.png",
-		"barrel_yellow.png"
-	};
-
-	for (int i = 0; i < 4; i++)
-		this->obstacleTextureList.push_back(TextureManager::getInstance()->getTexture(textureKeyList[i]));
-
+	initTexture();
 
 	// randomly assign a texture from the vector
-	int index = rand() % 4;
+	int index = rand() % obstacleTextureList.size();
 	this->sprite = new sf::Sprite();
 	this->sprite->setTexture(*obstacleTextureList[index]);
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
-	this->sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
+	this->sprite->setOrigin((float)textureSize.x / 2, (float)textureSize.y / 2);
 	this->sprite->setScale(0.6f, 0.6f);
 
 
@@ -60,7 +50,16 @@ void ObstacleObject::initialize()
 
 void ObstacleObject::initTexture()
 {
+	// init all appropriate textures for the obstacles
+	std::vector<std::string> textureKeyList = {
+		"obstacle_manhole.png",
+		"barrel_cyan.png",
+		"barrel_red.png",
+		"barrel_yellow.png"
+	};
 
+	for (int i = 0; i < 4; i++)
+		this->obstacleTextureList.push_back(TextureManager::getInstance()->getTexture(textureKeyList[i]));
 }
 
 
@@ -72,19 +71,17 @@ void ObstacleObject::onRelease()
 
 	sf::Vector2u textureSize = obstacleTextureList[index]->getSize();
 	this->sprite->setTextureRect(sf::IntRect(0,0,textureSize.x, textureSize.y));
-	this->sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
+	this->sprite->setOrigin((float)textureSize.x / 2, (float)textureSize.y / 2);
 
 
 	// update physics managers
-	PhysicsManager::getInstance()->untrackObject((Collider*)this->findComponentByName("ObstacleCollider"));
+	PhysicsManager::getInstance()->untrackObject(this->collider);
 }
 
 
 void ObstacleObject::onActivate()
 {
-	// init position from 525 until 775
-	int randX = rand() % (775 - 525) + 525;
-	this->setPosition(randX, -600);
+	
 }
 
 
@@ -106,6 +103,10 @@ void ObstacleObject::onCollisionEnter(AGameObject* contact)
 	if (contact->getName().find("Player") != std::string::npos && !crashed)
 	{
 		crashed = true;
+	}
+	else if (contact->getName().find("CarFuel") != std::string::npos)
+	{
+		this->collider->setAlreadyCollided(false);
 	}
 }
 

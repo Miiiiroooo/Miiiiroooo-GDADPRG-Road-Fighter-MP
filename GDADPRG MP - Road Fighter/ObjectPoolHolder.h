@@ -23,6 +23,7 @@ public:
 	// pool names
 	static std::string OBSTACLE_POOL_TAG;
 	static std::string ENEMY_CAR_POOL_TAG;
+	static std::string CAR_FUEL_POOL_TAG;
 
 private:
 	static ObjectPoolHolder* sharedInstance;

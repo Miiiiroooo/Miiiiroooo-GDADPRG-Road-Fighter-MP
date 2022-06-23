@@ -4,16 +4,13 @@
 #include "Collider.h"
 #include "CollisionListener.h"
 
-class EnemyCarObject : public APoolable, public CollisionListener
+class CarFuelObject : public APoolable, public CollisionListener
 {
 public:
-	EnemyCarObject(std::string name);
-	~EnemyCarObject();
+	CarFuelObject(std::string name);
+	~CarFuelObject();
 
 	void initialize();
-	void initTexture();
-	
-	float getCarSpeed();
 
 	void onRelease();
 	void onActivate();
@@ -25,11 +22,6 @@ public:
 
 
 private:
-	std::vector<sf::Texture*> enemyCarsTextureList;
-
-	std::vector<float> carSpeedList;
-	float carSpeed = 0.0f;
-
 	Collider* collider = NULL;
 	bool crashed = false;
 };

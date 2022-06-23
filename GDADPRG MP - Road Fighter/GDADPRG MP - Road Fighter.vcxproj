@@ -164,6 +164,9 @@
     <ClCompile Include="BackgroundScroll.cpp" />
     <ClCompile Include="BasicUIObject.cpp" />
     <ClCompile Include="BlackScreen.cpp" />
+    <ClCompile Include="CarFuelBehavior.cpp" />
+    <ClCompile Include="CarFuelObject.cpp" />
+    <ClCompile Include="CarFuelSpawner.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CrashComponent.cpp" />
     <ClCompile Include="EmptyGameObject.cpp" />
@@ -223,6 +226,9 @@
     <ClInclude Include="BasicUIObject.h" />
     <ClInclude Include="BlackScreen.h" />
     <ClInclude Include="ButtonListener.h" />
+    <ClInclude Include="CarFuelBehavior.h" />
+    <ClInclude Include="CarFuelObject.h" />
+    <ClInclude Include="CarFuelSpawner.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionListener.h" />
     <ClInclude Include="CrashComponent.h" />

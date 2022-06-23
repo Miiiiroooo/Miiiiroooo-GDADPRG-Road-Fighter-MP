@@ -51,6 +51,9 @@ void GameManager::update(sf::Time deltaTime)
 	{
 		fuelTicks = 0.f;
 		fuel -= FUEL_DRAIN;
+
+		if (fuel < 0)
+			fuel = 0;
 	}
 
 	//SCORE
@@ -88,6 +91,16 @@ int GameManager::getDistance()
 	return travelledDistance;
 }
 
+void GameManager::addFuel(int increase)
+{
+	this->fuel += increase;
+}
+
+void GameManager::addScore(int increase)
+{
+	this->score += increase;
+}
+
 bool GameManager::crashed()
 {
 	return this->crash;
@@ -111,8 +124,11 @@ void GameManager::setPlayer(Player* player)
 void GameManager::resetPlayer()
 {
 	this->crash = false;
-	this->fuel -= 10;
 	this->speed = 0;
+
+	this->fuel -= 10;
+	if (this->fuel < 0)
+		fuel = 0;
 
 	this->score -= 500;
 	if (this->score < 0)

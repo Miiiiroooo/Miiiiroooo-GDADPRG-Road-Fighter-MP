@@ -19,6 +19,8 @@ public:
 	float getScore();
 	float getFuel();
 	int getDistance();
+	void addScore(int increase);
+	void addFuel(int increase);
 
 	bool crashed();
 	void setCrashState(bool value);

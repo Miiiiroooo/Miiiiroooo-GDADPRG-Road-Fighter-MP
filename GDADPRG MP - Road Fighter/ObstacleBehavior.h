@@ -11,8 +11,9 @@ public:
 
 	void perform();
 
+
 private:
 	GameManager* gameManager = NULL;
-	float crashDuration;
+	float crashDuration;   // gets incremented for each deltatime
 };
 

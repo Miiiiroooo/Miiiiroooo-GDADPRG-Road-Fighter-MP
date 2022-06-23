@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameScreen.h"
 
+// Managers
 #include "Game.h"
 #include "GameManager.h"
 #include "UIGameManager.h"
@@ -9,17 +10,19 @@
 #include "SFXManager.h"
 #include "PhysicsManager.h"
 
+// Objects
 #include "Player.h"
 #include "Background.h"
 #include "BlackScreen.h"
 #include "EmptyGameObject.h"
 
+// Scripts
 #include "ObstacleSpawner.h"
 #include "EnemyCarSpawner.h"
-
+#include "CarFuelSpawner.h"
 #include "CrashComponent.h"
-
 #include "PlayerSoundHandler.h"
+
 
 // constructor and destructor of the GameScreen Class
 GameScreen::GameScreen(std::string name) : AGameObject(name)
@@ -42,22 +45,16 @@ void GameScreen::initialize()
 	this->gameManager = new GameManager("GameManager");
 	GameObjectManager::getInstance()->addObject(gameManager);
 
-	UIGameManager* UIManager = new UIGameManager("UIGameManager");
-	GameObjectManager::getInstance()->addObject(UIManager);
-
 	Background* background = new Background("Background");
 	background->setTexture(TextureManager::getInstance()->getTexture("background"));
 	GameObjectManager::getInstance()->addObject(background);
 
+	UIGameManager* UIManager = new UIGameManager("UIGameManager");
+	GameObjectManager::getInstance()->addObject(UIManager);
+
 	Player* player = new Player("Player");
-	
-	
 	GameObjectManager::getInstance()->addObject(player);
 	this->gameManager->setPlayer(player);
-
-	//set road hitbox
-	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
-	crashComponent->setRoadEdges(500, 790);
 
 
 	// init spawners for enemies and obstacles
@@ -68,16 +65,27 @@ void GameScreen::initialize()
 	spawner->attachComponent(obstacleSpawner);
 	obstacleSpawner->attachOwner(spawner);
 
-	EnemyCarSpawner* enemyCarSpawner = new EnemyCarSpawner("EnemyCarSpawner", 3);
+	EnemyCarSpawner* enemyCarSpawner = new EnemyCarSpawner("EnemyCarSpawner", 12);
 	spawner->attachComponent(enemyCarSpawner);
 	enemyCarSpawner->attachOwner(spawner);
+
+	CarFuelSpawner* fuelSpawner = new CarFuelSpawner("Fuel Spawner", 2);
+	spawner->attachComponent(fuelSpawner);
+	fuelSpawner->attachOwner(spawner);
+
+
+	//set road hitbox
+	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
+	crashComponent->setRoadEdges(500, 790);
+	obstacleSpawner->setRoadEdges(525, 775);
+	enemyCarSpawner->setRoadEdges(525, 775);
+	fuelSpawner->setRoadEdges(525, 775);
 
 
 	// init Physics
 	EmptyGameObject* physicsManager = new EmptyGameObject("PhysicsManager");
 	this->attachChild(physicsManager);
 	PhysicsManager::getInstance()->initialize("physics_script", physicsManager);
-	PhysicsManager::getInstance()->attachOwner(physicsManager);
 
 	Collider* playerCollider = (Collider*)player->findComponentByName("PlayerCollider");
 	PhysicsManager::getInstance()->trackObject(playerCollider);
@@ -110,26 +118,26 @@ void GameScreen::onGameOver()
 {
 	if (!isGameOver) // a flag that prevents repetitive declarations of the following objects and components
 	{
-
-		UIText* gameOverText = new UIText("GameOver");
-		GameObjectManager::getInstance()->addObject(gameOverText);
-		gameOverText->setParent(this);
-		gameOverText->setSize(100);
-		gameOverText->setText("GAME\nOVER");
-		gameOverText->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);
-
-		
 		sf::SoundBuffer* buffer = SFXManager::getInstance()->getAudio("GameOver");
 		this->gameOverTune = new sf::Sound();
 		gameOverTune->setBuffer(*buffer);
 		gameOverTune->play();
-		
+
+
 		PlayerSoundHandler* soundHandler = (PlayerSoundHandler*)GameObjectManager::getInstance()->findObjectByName("Player")->findComponentByName("SoundHandler");
 		if (soundHandler == nullptr)
 		{
 			cout << "null";
 		}
 		soundHandler->EnableSound(false);
+
+
+		UIText* gameOverText = new UIText("GameOver");
+		GameObjectManager::getInstance()->addObject(gameOverText);
+		gameOverText->setParent(this);
+		gameOverText->setSize(100);
+		gameOverText->setText("GAME\nOVER");
+		gameOverText->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);		
 
 		isGameOver = true;
 	}
