@@ -85,7 +85,7 @@ void UIGameManager::update(sf::Time deltaTIme)
 	updateSpeed();
 	updateFuel();
 
-	if (gameManager->getDistance() > 36000 && !isGoalLineEnabled)
+	if (gameManager->getDistance() > 39875 && !isGoalLineEnabled)
 		spawnGoalLine();
 }
 
@@ -106,7 +106,7 @@ int UIGameManager::getDigits(int num)
 
 void UIGameManager::spawnGoalLine()
 {
-	this->goalLine->setPosition(Game::WINDOW_WIDTH / 2, -3950);
+	this->goalLine->setPosition(Game::WINDOW_WIDTH / 2, -100);
 	this->goalLine->setEnabled(true);
 
 	isGoalLineEnabled = true;
@@ -115,12 +115,12 @@ void UIGameManager::spawnGoalLine()
 
 void UIGameManager::updateMiniPlayer()
 {
-	// miniplayer starts at  y = 700
-	// miniplayer should end at y = 100
+	// miniplayer starts at  y = 685
+	// miniplayer should end at y = 45
 	// overall, 600 pixels to travel
 
 	float progress = gameManager->getDistance() / 40000.f; // get percentage from distance travelled and max distance
-	float newPos = 600.0f - (600.0f * progress); 
+	float newPos = 685.0f - (640.0f * progress); 
 
 	this->miniPlayer->getTransformable()->setPosition(160.0f, newPos);
 }

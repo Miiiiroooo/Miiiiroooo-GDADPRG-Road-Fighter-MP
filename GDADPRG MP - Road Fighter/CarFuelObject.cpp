@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CarFuelObject.h"
 #include "CarFuelBehavior.h"
+#include "SFXManager.h"
 #include "PhysicsManager.h"
 #include "ObjectPoolHolder.h"
 
@@ -14,7 +15,11 @@ CarFuelObject::CarFuelObject(std::string name) : APoolable(name)
 
 CarFuelObject::~CarFuelObject()
 {
-
+	if (this->scoreTune != NULL)
+	{
+		delete this->scoreTune;
+		this->scoreTune = NULL;
+	}
 }
 
 
@@ -26,6 +31,12 @@ void CarFuelObject::initialize()
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
 	this->sprite->setOrigin((float)textureSize.x / 2, (float)textureSize.y / 2);
 	this->sprite->setScale(0.6f, 0.6f);
+
+
+	// audio
+	sf::SoundBuffer* buffer = SFXManager::getInstance()->getAudio("GainedScore");
+	this->scoreTune = new sf::Sound();
+	this->scoreTune->setBuffer(*buffer);
 
 
 	// init components
@@ -42,6 +53,12 @@ void CarFuelObject::initialize()
 	this->collider->setLocalBounds(sprite->getGlobalBounds());
 	this->collider->setCollisionListener(this);
 	this->attachComponent(collider);
+}
+
+
+void CarFuelObject::playTune()
+{
+	this->scoreTune->play();
 }
 
 

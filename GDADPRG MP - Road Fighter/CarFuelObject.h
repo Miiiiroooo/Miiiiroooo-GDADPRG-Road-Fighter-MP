@@ -12,6 +12,8 @@ public:
 
 	void initialize();
 
+	void playTune();
+
 	void onRelease();
 	void onActivate();
 	APoolable* clone();
@@ -22,6 +24,8 @@ public:
 
 
 private:
+	sf::Sound* scoreTune = NULL;
+
 	Collider* collider = NULL;
 	bool crashed = false;
 };

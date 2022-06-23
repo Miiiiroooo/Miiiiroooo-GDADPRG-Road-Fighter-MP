@@ -27,6 +27,9 @@ void CarFuelBehavior::perform()
 	// check for self-car crash or went out-of-bounds
 	if (carFuel->hasBeenCrashed() || carFuel->getTransformable()->getPosition().y >= 900 || carFuel->getTransformable()->getPosition().y <= -300)
 	{
+		if (carFuel->hasBeenCrashed())
+			carFuel->playTune();
+
 		gameManager->addFuel(3);
 		gameManager->addScore(1000);
 

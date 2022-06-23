@@ -104,7 +104,7 @@ void ObstacleObject::onCollisionEnter(AGameObject* contact)
 	{
 		crashed = true;
 	}
-	else if (contact->getName().find("CarFuel") != std::string::npos)
+	else if (contact->getName().find("CarFuel") != std::string::npos || contact->getName().find("EnemyCar") != std::string::npos)
 	{
 		this->collider->setAlreadyCollided(false);
 	}
