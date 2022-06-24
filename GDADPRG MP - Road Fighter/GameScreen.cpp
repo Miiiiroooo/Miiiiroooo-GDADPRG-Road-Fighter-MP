@@ -82,14 +82,12 @@ void GameScreen::initialize()
 	spawner->attachComponent(fuelSpawner);
 	fuelSpawner->attachOwner(spawner);
 
-
 	//set road hitbox
 	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
 	crashComponent->setRoadEdges(820, 1100);
 	obstacleSpawner->setRoadEdges(845, 1075);
 	enemyCarSpawner->setRoadEdges(845, 1075);
 	fuelSpawner->setRoadEdges(845, 1075);
-
 
 	// init Physics
 	EmptyGameObject* physicsManager = new EmptyGameObject("PhysicsManager");
