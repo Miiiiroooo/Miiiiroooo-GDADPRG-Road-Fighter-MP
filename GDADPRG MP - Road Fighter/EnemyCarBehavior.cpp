@@ -61,7 +61,7 @@ void EnemyCarBehavior::perform()
 			if (enemyCar->getTransformable()->getPosition().y > 600)
 			{
 				//cout <<  << endl;
-				if (enemyCar->getTransformable()->getPosition().x > player->getTransformable()->getPosition().x || enemyCar->getTransformable()->getPosition().x > )
+				if (enemyCar->getTransformable()->getPosition().x > player->getTransformable()->getPosition().x)
 				{
 					
 					
