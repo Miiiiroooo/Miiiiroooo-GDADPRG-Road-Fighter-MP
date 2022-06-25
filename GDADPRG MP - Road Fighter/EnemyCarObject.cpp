@@ -136,7 +136,8 @@ void EnemyCarObject::onCollisionEnter(AGameObject* contact)
 
 	// else reset collider settings if contact is already disabled OR contact is a car fuel
 	else if ((contact->getName().find("EnemyCar") != std::string::npos && !contact->isEnabled()) || 
-			  contact->getName().find("CarFuel") != std::string::npos)
+			  contact->getName().find("CarFuel") != std::string::npos || 
+			  contact->getName().find("GoalLine") != std::string::npos)
 	{
 		this->collider->setAlreadyCollided(false);
 	}

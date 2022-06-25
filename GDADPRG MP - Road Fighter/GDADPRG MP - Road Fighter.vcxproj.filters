@@ -240,6 +240,9 @@
     <ClCompile Include="GoalLineMovement.cpp">
       <Filter>Source Files\Components\Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="GoalLineObject.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -409,6 +412,9 @@
     </ClInclude>
     <ClInclude Include="GoalLineMovement.h">
       <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="GoalLineObject.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

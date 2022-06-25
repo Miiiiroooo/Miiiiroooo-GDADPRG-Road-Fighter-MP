@@ -119,7 +119,7 @@ bool GameManager::checkGameOver()
 
 bool GameManager::checkGoal()
 {
-	return (this->travelledDistance > 40000);
+	return (this->player->hasReachedGoal());
 }
 
 void GameManager::setPlayer(Player* player)

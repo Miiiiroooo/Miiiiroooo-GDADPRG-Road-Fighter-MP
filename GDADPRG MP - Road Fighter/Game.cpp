@@ -7,7 +7,7 @@
 #include "ApplicationManager.h"
 
 // constructor and destructor of the Game Class
-Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighter")
+Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighter", sf::Style::Fullscreen)
 {
 	m_Window.setFramerateLimit(140);
 	srand((unsigned int)time(NULL));

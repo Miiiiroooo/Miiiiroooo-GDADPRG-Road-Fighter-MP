@@ -12,6 +12,7 @@ public:
 	~GameScreen();
 
 	void initialize();
+	void spawnGoalLine();
 	void update(sf::Time deltaTime);
 
 	void onCheckpoint();
@@ -23,6 +24,8 @@ private:
 	GameManager* gameManager = NULL;
 
 	// checkpoint
+	bool isGoalLineSpawned = false;
+
 	const sf::Time checkpointDuration = sf::seconds(7.0f);
 	sf::Time elapsedCheckpoint = sf::seconds(0.0f);
 	bool isCheckpoint = false;

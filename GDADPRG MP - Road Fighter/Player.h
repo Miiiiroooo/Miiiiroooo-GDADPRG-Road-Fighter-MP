@@ -15,6 +15,7 @@ public:
 	void setCrashedTexture();
 
 	bool hasCarCrashed();
+	bool hasReachedGoal();
 
 	void onCollisionEnter(AGameObject* contact);
 	void onCollisionExit(AGameObject* gameObject);
@@ -26,7 +27,7 @@ private:
 	sf::Texture* crashedTexture;
 		
 	bool carCrash = false;
+	bool goal = false;
 	Collider* collider;
-
 };
 

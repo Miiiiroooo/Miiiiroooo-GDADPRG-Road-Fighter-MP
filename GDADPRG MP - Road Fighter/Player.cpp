@@ -71,10 +71,14 @@ bool Player::hasCarCrashed()
 }
 
 
+bool Player::hasReachedGoal()
+{
+	return this->goal;
+}
+
+
 void Player::onCollisionEnter(AGameObject* contact)
 {
-	
-
 	if ((contact->getName().find("EnemyCar") != std::string::npos || contact->getName().find("Obstacle") != std::string::npos) && !carCrash)
 	{
 		carCrash = true;
@@ -83,6 +87,10 @@ void Player::onCollisionEnter(AGameObject* contact)
 	else if (contact->getName().find("CarFuel") != std::string::npos)
 	{
 		this->collider->setAlreadyCollided(false);
+	}
+	else if (contact->getName().find("GoalLine") != std::string::npos)
+	{
+		this->goal = true;
 	}
 }
 

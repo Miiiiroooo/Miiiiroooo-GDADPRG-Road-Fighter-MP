@@ -12,6 +12,7 @@ public:
 	~GameScreen_2();
 
 	void initialize();
+	void spawnGoalLine();
 	void update(sf::Time deltaTime);
 
 	void onGoal();
@@ -23,6 +24,8 @@ private:
 	GameManager* gameManager = NULL;
 
 	// Goal
+	bool isGoalLineSpawned = false;
+
 	const sf::Time goalDuration = sf::seconds(12.0f);
 	sf::Time elapsedGoal = sf::seconds(0.0f);
 	bool isGoal = false;

@@ -2,7 +2,6 @@
 #include "UIGameManager.h"
 #include "Game.h"
 #include "MiniRoad.h"
-#include "GoalLineMovement.h"
 
 
 // constructor and destructor of the UIGameManager Class
@@ -65,28 +64,19 @@ void UIGameManager::initialize()
 	this->attachChild(this->fuelText);
 	this->fuelText->setSize(90);
 	this->fuelText->setText("000");
-
-
-	// GOAL LINE
-	this->goalLine = new BasicUIObject("GoalLine", "goal_line.png", 0.6f);
-	GameObjectManager::getInstance()->addObject(goalLine);
-	this->goalLine->setEnabled(false);
-
-	GoalLineMovement* logicComponent = new GoalLineMovement("GoalLineMovement");
-	this->goalLine->attachComponent(logicComponent);
-	logicComponent->attachOwner(this->goalLine);
 }
 
 
 void UIGameManager::update(sf::Time deltaTIme)
 {
-	updateMiniPlayer();
-	updateScore();
+	if (!gameManager->checkGoal() && !gameManager->checkGameOver())
+	{
+		updateMiniPlayer();
+		updateScore();
+	}
+
 	updateSpeed();
 	updateFuel();
-
-	if (gameManager->getDistance() > 39650 && !isGoalLineEnabled)
-		spawnGoalLine();
 }
 
 
@@ -104,28 +94,16 @@ int UIGameManager::getDigits(int num)
 }
 
 
-void UIGameManager::spawnGoalLine()
-{
-	this->goalLine->setPosition(Game::WINDOW_WIDTH / 2, -100);
-	this->goalLine->setEnabled(true);
-
-	isGoalLineEnabled = true;
-}
-
-
 void UIGameManager::updateMiniPlayer()
 {
 	// miniplayer starts at  y = 1030
 	// miniplayer should end at y = 40
 	// overall, 990 pixels to travel
 
-	if (!gameManager->checkGoal())
-	{
-		float progress = gameManager->getDistance() / 40000.f; // get percentage from distance travelled and max distance
-		float newPos = 1030.0f - (990.0f * progress);
+	float progress = gameManager->getDistance() / 40000.f; // get percentage from distance travelled and max distance
+	float newPos = 1030.0f - (990.0f * progress);
 
-		this->miniPlayer->getTransformable()->setPosition(225.0f, newPos);
-	}
+	this->miniPlayer->getTransformable()->setPosition(225.0f, newPos);
 }
 
 

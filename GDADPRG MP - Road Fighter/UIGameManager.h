@@ -17,7 +17,6 @@ public:
 
 	int getDigits(int num);
 
-	void spawnGoalLine();
 	void updateMiniPlayer();
 	void updateScore();
 	void updateSpeed();
@@ -30,8 +29,5 @@ private:
 	UIText* scoreText = NULL;
 	UIText* speedText = NULL;
 	UIText* fuelText = NULL;
-
-	bool isGoalLineEnabled = false;
-	BasicUIObject* goalLine = NULL;
 };
 

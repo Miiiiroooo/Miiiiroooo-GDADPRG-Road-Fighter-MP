@@ -15,11 +15,13 @@
 #include "Background.h"
 #include "BlackScreen.h"
 #include "EmptyGameObject.h"
+#include "GoalLineObject.h"
 
 // Scripts
 #include "ObstacleSpawner.h"
 #include "EnemyCarSpawner.h"
 #include "CrashComponent.h"
+#include "CarFuelSpawner.h"
 #include "PlayerSoundHandler.h"
 
 
@@ -77,12 +79,17 @@ void GameScreen_2::initialize()
 	spawner->attachComponent(enemyCarSpawner);
 	enemyCarSpawner->attachOwner(spawner);
 
+	CarFuelSpawner* fuelSpawner = new CarFuelSpawner("Fuel Spawner", 2);
+	spawner->attachComponent(fuelSpawner);
+	fuelSpawner->attachOwner(spawner);
+
 
 	//set road hitbox
 	CrashComponent* crashComponent = (CrashComponent*)player->findComponentByName("CrashComponent");
-	crashComponent->setRoadEdges(540, 740);
-	obstacleSpawner->setRoadEdges(560, 725);
-	enemyCarSpawner->setRoadEdges(560, 725);
+	crashComponent->setRoadEdges(860, 1060);
+	obstacleSpawner->setRoadEdges(885, 1035);
+	enemyCarSpawner->setRoadEdges(885, 1035);
+	fuelSpawner->setRoadEdges(885, 1035);
 
 	
 	// init Physics
@@ -95,8 +102,28 @@ void GameScreen_2::initialize()
 }
 
 
+void GameScreen_2::spawnGoalLine()
+{
+	GoalLineObject* goalLine = new GoalLineObject("GoalLine", 0.7f);
+	GameObjectManager::getInstance()->addObject(goalLine);
+	goalLine->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, -500);
+
+	Collider* collider = (Collider*)goalLine->findComponentByName("GoalLineCollider");
+	PhysicsManager::getInstance()->trackObject(collider);
+
+	isGoalLineSpawned = true;
+}
+
+
 void GameScreen_2::update(sf::Time deltaTime)
 {
+	// check if player has reached a certain distance to spawn the goal line
+	if (gameManager->getDistance() > 40000 && !isGoalLineSpawned)
+	{
+		spawnGoalLine();
+	}
+
+
 	// check if game is still running
 	if (!gameManager->checkGameOver() && !gameManager->checkGoal())
 	{
@@ -105,7 +132,6 @@ void GameScreen_2::update(sf::Time deltaTime)
 			childList[i]->update(deltaTime);
 		}
 	}
-
 	// check if player reached goal
 	else if (gameManager->checkGoal())
 	{
@@ -119,7 +145,6 @@ void GameScreen_2::update(sf::Time deltaTime)
 			onGoal();
 		}
 	}
-
 	// check if gameover
 	else if (gameManager->checkGameOver())
 	{

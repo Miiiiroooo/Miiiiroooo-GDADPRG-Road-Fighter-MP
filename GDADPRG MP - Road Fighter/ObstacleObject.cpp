@@ -65,7 +65,7 @@ void ObstacleObject::initTexture()
 void ObstacleObject::onRelease()
 {
 	// set new texture AND update size before object gets activated
-	int index = rand() % 4;
+	int index = rand() % obstacleTextureList.size();
 	this->sprite->setTexture(*obstacleTextureList[index]);
 
 	sf::Vector2u textureSize = obstacleTextureList[index]->getSize();
@@ -103,7 +103,9 @@ void ObstacleObject::onCollisionEnter(AGameObject* contact)
 	{
 		crashed = true;
 	}
-	else if (contact->getName().find("CarFuel") != std::string::npos || contact->getName().find("EnemyCar") != std::string::npos)
+	else if (contact->getName().find("CarFuel") != std::string::npos || 
+			 contact->getName().find("EnemyCar") != std::string::npos || 
+		   	 contact->getName().find("GoalLine") != std::string::npos)
 	{
 		this->collider->setAlreadyCollided(false);
 	}

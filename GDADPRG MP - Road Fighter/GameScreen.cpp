@@ -15,6 +15,7 @@
 #include "Background.h"
 #include "BlackScreen.h"
 #include "EmptyGameObject.h"
+#include "GoalLineObject.h"
 
 // Scripts
 #include "ObstacleSpawner.h"
@@ -99,8 +100,28 @@ void GameScreen::initialize()
 }
 
 
+void GameScreen::spawnGoalLine()
+{
+	GoalLineObject* goalLine = new GoalLineObject("GoalLine", 0.8f);
+	GameObjectManager::getInstance()->addObject(goalLine);
+	goalLine->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, -500);
+
+	Collider* collider = (Collider*)goalLine->findComponentByName("GoalLineCollider");
+	PhysicsManager::getInstance()->trackObject(collider);
+
+	isGoalLineSpawned = true;
+}
+
+
 void GameScreen::update(sf::Time deltaTime)
 {
+	// check if player has reached a certain distance to spawn the goal line
+	if (gameManager->getDistance() > 40000 && !isGoalLineSpawned)
+	{
+		spawnGoalLine();
+	}
+
+
 	// check if game still ongoing
 	if (!gameManager->checkGameOver() && !gameManager->checkGoal())
 	{
@@ -109,7 +130,6 @@ void GameScreen::update(sf::Time deltaTime)
 			childList[i]->update(deltaTime);
 		}
 	}
-
 	// check if player reached checkpoint
 	else if (gameManager->checkGoal())
 	{
@@ -123,7 +143,6 @@ void GameScreen::update(sf::Time deltaTime)
 			onCheckpoint();
 		}
 	}
-
 	// check if gameover
 	else if (gameManager->checkGameOver())
 	{
