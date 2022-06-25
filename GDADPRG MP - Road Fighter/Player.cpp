@@ -26,7 +26,7 @@ void Player::initialize()
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
 	this->sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 	this->sprite->setScale(0.5f, 0.5f);
-	this->transformable.setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2 + 400);
+	this->transformable.setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2 + 300);
 
 	
 	PlayerInput* playerInput = new PlayerInput("input_control");
@@ -40,7 +40,7 @@ void Player::initialize()
 	this->attachComponent(crashComponent);
 	
 	Renderer* renderComponent = new Renderer("BGSprite");
-	renderComponent->assignDrawable(sprite);
+	renderComponent->assignDrawable(this->sprite);
 	this->attachComponent(renderComponent);
 
 	this->collider = new Collider("PlayerCollider");

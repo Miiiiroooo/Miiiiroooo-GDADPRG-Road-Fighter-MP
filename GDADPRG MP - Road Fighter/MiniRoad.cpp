@@ -26,7 +26,7 @@ void MiniRoad::initialize()
 	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
 	this->sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 	this->sprite->setTextureRect(sf::IntRect(0, 0, textureSize.x, Game::WINDOW_HEIGHT * 2));
-	this->sprite->setScale(0.7f, 0.7f);
+	this->sprite->setScale(1.1f, 1.1f);
 	
 
 	// init components

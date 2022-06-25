@@ -38,7 +38,7 @@ void TitleScreen::initialize()
 	this->attachChild(button1);
 	button1->setParent(this);
 	button1->setButtonListener(this);
-	button1->setPosition(0, 225);
+	button1->setPosition(0, 250);
 	button1->getTransformable()->setScale(0.6f, 0.6f);
 
 	UIText* button1_Text = new UIText("text_1");
@@ -52,7 +52,7 @@ void TitleScreen::initialize()
 	this->attachChild(button2);
 	button2->setParent(this);
 	button2->setButtonListener(this);
-	button2->setPosition(0, 300);
+	button2->setPosition(0, 350);
 	button2->getTransformable()->setScale(0.6f, 0.6f);
 
 	UIText* button2_Text = new UIText("text_1");

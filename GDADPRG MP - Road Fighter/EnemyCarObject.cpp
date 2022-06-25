@@ -13,7 +13,7 @@ EnemyCarObject::EnemyCarObject(std::string name) : APoolable(name)
 		200.0f,
 		300.0f,
 		400.0f,
-		500.0f
+		500.0f,
 	};
 }
 
@@ -61,16 +61,10 @@ void EnemyCarObject::initTexture()
 	std::vector<std::string> textureKeyList = {
 		"enemy_cyan_0.png",
 		"enemy_cyan_1.png",
-		"enemy_cyan_2.png",
-		"enemy_cyan_3.png",
 		"enemy_red_0.png",
 		"enemy_red_1.png",
-		"enemy_red_2.png",
-		"enemy_red_3.png",
 		"enemy_yellow_0.png",
 		"enemy_yellow_1.png",
-		"enemy_yellow_2.png",
-		"enemy_yellow_3.png",
 	};
 
 	for (int i = 0; i < textureKeyList.size(); i++)

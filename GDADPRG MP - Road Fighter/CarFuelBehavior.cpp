@@ -25,7 +25,7 @@ void CarFuelBehavior::perform()
 	CarFuelObject* carFuel = (CarFuelObject*)this->getOwner();
 
 	// check for self-car crash or went out-of-bounds
-	if (carFuel->hasBeenCrashed() || carFuel->getTransformable()->getPosition().y >= 900 || carFuel->getTransformable()->getPosition().y <= -300)
+	if (carFuel->hasBeenCrashed() || carFuel->getTransformable()->getPosition().y >= 1200 || carFuel->getTransformable()->getPosition().y <= -100)
 	{
 		if (carFuel->hasBeenCrashed())
 			carFuel->playTune();

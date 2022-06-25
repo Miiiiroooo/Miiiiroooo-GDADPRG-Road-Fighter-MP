@@ -40,7 +40,7 @@ void ObstacleBehavior::perform()
 	}
 
 	// check if obstacle is out of bounds
-	else if (obstacle->getTransformable()->getPosition().y >= 750)
+	else if (obstacle->getTransformable()->getPosition().y >= 1200)
 	{
 		GameObjectPool* obstaclePool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::OBSTACLE_POOL_TAG);
 		obstaclePool->releasePoolable(obstacle);

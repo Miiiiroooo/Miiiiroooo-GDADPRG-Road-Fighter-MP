@@ -40,7 +40,7 @@ void EnemyCarBehavior::perform()
 	}
 
 	// check if enemy car is out of bounds
-	else if (enemyCar->getTransformable()->getPosition().y >= 900 || enemyCar->getTransformable()->getPosition().y <= -300)
+	else if (enemyCar->getTransformable()->getPosition().y >= 1200 || enemyCar->getTransformable()->getPosition().y <= -100)
 	{
 		GameObjectPool* enemyCarPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::ENEMY_CAR_POOL_TAG);
 		enemyCarPool->releasePoolable(enemyCar);
@@ -50,7 +50,7 @@ void EnemyCarBehavior::perform()
 	else if (!gameManager->crashed())
 	{
 		float player_speed = gameManager->getSpeed();
-		float car_speed = 1.6 * player_speed - enemyCar->getCarSpeed();
+		float car_speed = 2 * player_speed - enemyCar->getCarSpeed();
 
 		enemyCar->getTransformable()->move(0, car_speed * deltaTime.asSeconds());
 	}

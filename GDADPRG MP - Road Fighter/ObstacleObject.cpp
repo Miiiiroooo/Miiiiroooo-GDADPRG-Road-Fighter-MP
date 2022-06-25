@@ -52,13 +52,12 @@ void ObstacleObject::initTexture()
 {
 	// init all appropriate textures for the obstacles
 	std::vector<std::string> textureKeyList = {
-		"obstacle_manhole.png",
 		"barrel_cyan.png",
 		"barrel_red.png",
 		"barrel_yellow.png"
 	};
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < textureKeyList.size(); i++)
 		this->obstacleTextureList.push_back(TextureManager::getInstance()->getTexture(textureKeyList[i]));
 }
 
