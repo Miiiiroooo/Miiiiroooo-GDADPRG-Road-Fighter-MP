@@ -15,5 +15,6 @@ public:
 private:
 	GameManager* gameManager = NULL;
 	float crashDuration;  // gets incremented for each deltatime
+	float sideTicks = 0;
 };
 
