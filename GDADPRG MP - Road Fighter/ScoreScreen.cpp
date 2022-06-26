@@ -46,6 +46,8 @@ void ScoreScreen::initialize()
 
 void ScoreScreen::update(sf::Time deltaTime)
 {
+	ScoreManager::getInstance()->updateScore(0);
+
 	if (elapsed < screenDuration)
 	{
 		elapsed += deltaTime.asSeconds();
