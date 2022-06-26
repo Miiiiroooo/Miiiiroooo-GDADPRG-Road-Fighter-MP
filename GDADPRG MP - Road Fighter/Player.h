@@ -14,8 +14,8 @@ public:
 	void setNormalTexture();
 	void setCrashedTexture();
 
-	bool hasCarCrashed();
-	bool hasReachedGoal();
+	void removeRenderer();
+	void attachRenderer();
 
 	void onCollisionEnter(AGameObject* contact);
 	void onCollisionExit(AGameObject* gameObject);
@@ -23,11 +23,12 @@ public:
 
 private:
 	const float SPEED_MULTIPLIER = 100.0f;
-	sf::Texture* normalTexture;
-	sf::Texture* crashedTexture;
-		
-	bool carCrash = false;
-	bool goal = false;
-	Collider* collider;
+	sf::Texture* normalTexture = NULL;
+	sf::Texture* crashedTexture = NULL;
+
+	Renderer* renderComponent = NULL;
+	bool hasRenderer = false;
+	
+	Collider* collider = NULL;
 };
 

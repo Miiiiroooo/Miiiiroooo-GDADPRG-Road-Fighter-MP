@@ -98,8 +98,7 @@ void CarFuelObject::onCollisionEnter(AGameObject* contact)
 
 	// else if the fuel-car crashed onto other poolable objects, update collider settings
 	else if (contact->getName().find("EnemyCar") != std::string::npos || 
-			 contact->getName().find("Obstacle") != std::string::npos ||
-			 contact->getName().find("GoalLine") != std::string::npos)
+			 contact->getName().find("Obstacle") != std::string::npos)
 	{
 		this->collider->setAlreadyCollided(false);
 	}

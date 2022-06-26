@@ -173,7 +173,6 @@
     <ClCompile Include="EnemyCarBehavior.cpp" />
     <ClCompile Include="EnemyCarObject.cpp" />
     <ClCompile Include="EnemyCarSpawner.cpp" />
-    <ClCompile Include="FadingTextBehavior.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -186,8 +185,6 @@
     <ClCompile Include="GenericInputController.cpp" />
     <ClCompile Include="GoalLineMovement.cpp" />
     <ClCompile Include="GoalLineObject.cpp" />
-    <ClCompile Include="LoadingScene.cpp" />
-    <ClCompile Include="LoadingScreen.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScene.cpp" />
     <ClCompile Include="MiniRoad.cpp" />
@@ -201,7 +198,11 @@
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="PlayerSoundHandler.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RespawnBehavior.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
+    <ClCompile Include="ScoreScene.cpp" />
+    <ClCompile Include="ScoreScreen.cpp" />
     <ClCompile Include="ScreenTransitionBehavior.cpp" />
     <ClCompile Include="SFXManager.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -238,7 +239,6 @@
     <ClInclude Include="EnemyCarBehavior.h" />
     <ClInclude Include="EnemyCarObject.h" />
     <ClInclude Include="EnemyCarSpawner.h" />
-    <ClInclude Include="FadingTextBehavior.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
@@ -251,8 +251,6 @@
     <ClInclude Include="GenericInputController.h" />
     <ClInclude Include="GoalLineMovement.h" />
     <ClInclude Include="GoalLineObject.h" />
-    <ClInclude Include="LoadingScene.h" />
-    <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="MainMenuScene.h" />
     <ClInclude Include="MiniRoad.h" />
     <ClInclude Include="ObjectPoolHolder.h" />
@@ -265,7 +263,11 @@
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerSoundHandler.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RespawnBehavior.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ScoreManager.h" />
+    <ClInclude Include="ScoreScene.h" />
+    <ClInclude Include="ScoreScreen.h" />
     <ClInclude Include="ScreenTransitionBehavior.h" />
     <ClInclude Include="SFXManager.h" />
     <ClInclude Include="stdafx.h" />

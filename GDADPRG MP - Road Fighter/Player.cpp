@@ -6,13 +6,14 @@
 #include "PlayerMovement.h"
 #include "PlayerSoundHandler.h"
 #include "CrashComponent.h"
+#include "RespawnBehavior.h"
 
 
 using namespace std;
 
 Player::Player(std::string name) : AGameObject(name), CollisionListener()
 {
-
+	
 }
 
 void Player::initialize()
@@ -39,15 +40,14 @@ void Player::initialize()
 	//crashComponent->setRoadEdges(500, 790);
 	this->attachComponent(crashComponent);
 	
-	Renderer* renderComponent = new Renderer("BGSprite");
+	this->renderComponent = new Renderer("PlayerRenderer");
 	renderComponent->assignDrawable(this->sprite);
-	this->attachComponent(renderComponent);
+	attachRenderer();
 
 	this->collider = new Collider("PlayerCollider");
 	this->collider->setLocalBounds(sprite->getGlobalBounds());
 	this->collider->setCollisionListener(this);
 	this->attachComponent(collider);
-	this->collider->attachOwner(this);
 
 	PlayerSoundHandler* playerSound = new PlayerSoundHandler("SoundHandler");
 	this->attachComponent(playerSound);
@@ -65,40 +65,70 @@ void Player::setCrashedTexture()
 }
 
 
-bool Player::hasCarCrashed()
+void Player::removeRenderer()
 {
-	return this->carCrash;
+	if (hasRenderer)
+	{
+		int index = -1;
+
+		for (size_t i = 0; i < this->componentList.size(); i++)
+		{
+			if (this->componentList[i]->getName() == "PlayerRenderer")
+			{
+				index = (int)i;
+				break;
+			}
+		}
+
+		if (index != -1)
+		{
+			this->componentList.erase(this->componentList.begin() + index);
+		}
+
+		hasRenderer = false;
+	}
 }
 
 
-bool Player::hasReachedGoal()
+void Player::attachRenderer()
 {
-	return this->goal;
+	if (!hasRenderer)
+	{
+		this->attachComponent(this->renderComponent);
+		hasRenderer = true;
+	}
 }
 
 
 void Player::onCollisionEnter(AGameObject* contact)
 {
-	if ((contact->getName().find("EnemyCar") != std::string::npos || contact->getName().find("Obstacle") != std::string::npos) && !carCrash)
+	GameManager* gameManager = (GameManager*)GameObjectManager::getInstance()->findObjectByName("GameManager");
+
+	if ((contact->getName().find("EnemyCar") != std::string::npos ||
+		contact->getName().find("Obstacle") != std::string::npos) &&
+		!gameManager->crashed())
 	{
-		carCrash = true;
-		PhysicsManager::getInstance()->untrackObject(this->collider);
+		gameManager->setCrashState(true);
 	}
 	else if (contact->getName().find("CarFuel") != std::string::npos)
 	{
 		this->collider->setAlreadyCollided(false);
-	}
-	else if (contact->getName().find("GoalLine") != std::string::npos)
-	{
-		this->goal = true;
 	}
 }
 
 
 void Player::onCollisionExit(AGameObject* gameObject)
 {
-	
-	// reset player after car crash
-	PhysicsManager::getInstance()->trackObject(this->collider);
-	carCrash = false;
+	// if player died more than once consecutively, reset the old respawn component instead of initialize a new one
+	if (this->findComponentByName("RespawnComponent") != NULL)
+	{
+		RespawnBehavior* respawnComponent = (RespawnBehavior*)this->findComponentByName("RespawnComponent");
+		respawnComponent->reset();
+	}
+	else
+	{
+		RespawnBehavior* respawnComponent = new RespawnBehavior("RespawnComponent");
+		this->attachComponent(respawnComponent);
+		respawnComponent->attachOwner(this);
+	}
 }

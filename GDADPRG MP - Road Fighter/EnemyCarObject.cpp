@@ -30,9 +30,9 @@ void EnemyCarObject::initialize()
 	initTexture();
 
 	// randomly assign a texture from the vector
-	int index = rand() % enemyCarsTextureList.size();
+	int randIndex = rand() % enemyCarsTextureList.size();
 	this->sprite = new sf::Sprite();
-	this->sprite->setTexture(*enemyCarsTextureList[index]);
+	this->sprite->setTexture(*enemyCarsTextureList[randIndex]);
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
 	this->sprite->setOrigin((float)textureSize.x / 2, (float)textureSize.y / 2);
 	this->sprite->setScale(0.6f, 0.6f);
@@ -136,8 +136,7 @@ void EnemyCarObject::onCollisionEnter(AGameObject* contact)
 
 	// else reset collider settings if contact is already disabled OR contact is a car fuel
 	else if ((contact->getName().find("EnemyCar") != std::string::npos && !contact->isEnabled()) || 
-			  contact->getName().find("CarFuel") != std::string::npos || 
-			  contact->getName().find("GoalLine") != std::string::npos)
+			  contact->getName().find("CarFuel") != std::string::npos)
 	{
 		this->collider->setAlreadyCollided(false);
 	}

@@ -6,6 +6,7 @@
 #include "SFXManager.h"
 #include "PhysicsManager.h"
 #include "FontManager.h"
+#include "ScoreManager.h"
 
 class Game
 {

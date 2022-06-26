@@ -26,6 +26,7 @@ public:
 	void setCrashState(bool value);
 	bool checkGameOver();
 
+	void setGoal(bool value);
 	bool checkGoal();
 
 	void setPlayer(Player* player);
@@ -33,7 +34,7 @@ public:
 
 private:
 	int fuel = 100;
-	int speed = 0.f;
+	int speed = 0;
 	float score = 0.f;
 
 	float fuelTicks = 0.f;
@@ -50,6 +51,7 @@ private:
 	const int SCORE_ADD = 50;
 
 	bool crash = false;
+	bool goal = false;
 
 	int travelledDistance = 0;
 	const int maxDistance = 36000;

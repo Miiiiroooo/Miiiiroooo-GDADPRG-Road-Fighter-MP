@@ -4,6 +4,8 @@
 #include "Game.h"
 #include "GameScreen.h"
 #include "UIText.h"
+#include "ScoreManager.h"
+
 
 GameManager::GameManager(string name) :AGameObject(name)
 {
@@ -17,8 +19,13 @@ GameManager::~GameManager()
 
 void GameManager::initialize()
 {
+	// init player input component
 	playerInput = new PlayerInput("PlayerInput");
 	this->attachComponent(playerInput);
+
+
+	// init score
+	score = ScoreManager::getInstance()->getScore();
 }
 
 void GameManager::update(sf::Time deltaTime)
@@ -47,7 +54,7 @@ void GameManager::update(sf::Time deltaTime)
 
 	//FUEL
 	fuelTicks += deltaTime.asSeconds();
-	if (fuelTicks > FUEL_DRAIN_INTERVAL && !crash && speed != 0 && fuel > 0)
+	if (fuelTicks > FUEL_DRAIN_INTERVAL && !crash && speed != 0 && fuel > 0 && !this->checkGoal())
 	{
 		fuelTicks = 0.f;
 		fuel -= FUEL_DRAIN;
@@ -117,9 +124,14 @@ bool GameManager::checkGameOver()
 	return (fuel <= 0);
 }
 
+void GameManager::setGoal(bool value)
+{
+	this->goal = value;
+}
+
 bool GameManager::checkGoal()
 {
-	return (this->player->hasReachedGoal());
+	return (this->goal);
 }
 
 void GameManager::setPlayer(Player* player)
@@ -129,14 +141,13 @@ void GameManager::setPlayer(Player* player)
 
 void GameManager::resetPlayer()
 {
-	this->crash = false;
 	this->speed = 0;
 
 	this->fuel -= 10;
 	if (this->fuel < 0)
 		fuel = 0;
 
-	this->score -= 500;
+	this->score -= 1000;
 	if (this->score < 0)
 		score = 0;
 

@@ -13,7 +13,7 @@ Renderer::Renderer(std::string name) : AComponent(name, AComponent::ComponentTyp
 
 Renderer::~Renderer()
 {
-	delete this->drawable;
+	//delete this->drawable;
 	AComponent::~AComponent();
 }
 

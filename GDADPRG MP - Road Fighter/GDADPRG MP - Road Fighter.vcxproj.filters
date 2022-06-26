@@ -174,15 +174,6 @@
     <ClCompile Include="TitleScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="LoadingScene.cpp">
-      <Filter>Source Files\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="LoadingScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="FadingTextBehavior.cpp">
-      <Filter>Source Files\Components\Scripts</Filter>
-    </ClCompile>
     <ClCompile Include="UIGameManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
@@ -242,6 +233,18 @@
     </ClCompile>
     <ClCompile Include="GoalLineObject.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="RespawnBehavior.cpp">
+      <Filter>Source Files\Components\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -347,15 +350,6 @@
     <ClInclude Include="TitleScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="LoadingScene.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="LoadingScreen.h">
-      <Filter>Header Files\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="FadingTextBehavior.h">
-      <Filter>Header Files\Components\Scripts</Filter>
-    </ClInclude>
     <ClInclude Include="UIGameManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
@@ -415,6 +409,18 @@
     </ClInclude>
     <ClInclude Include="GoalLineObject.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="RespawnBehavior.h">
+      <Filter>Header Files\Components\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreScreen.h">
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

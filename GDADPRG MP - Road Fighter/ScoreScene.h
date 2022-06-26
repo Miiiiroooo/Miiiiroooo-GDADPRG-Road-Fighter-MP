@@ -2,11 +2,11 @@
 
 #include "AScene.h"
 
-class LoadingScene : public AScene
+class ScoreScene : public AScene
 {
 public:
-	LoadingScene();
-	~LoadingScene();
+	ScoreScene();
+	~ScoreScene();
 
 	void onLoadResources();
 	void onLoadObjects();

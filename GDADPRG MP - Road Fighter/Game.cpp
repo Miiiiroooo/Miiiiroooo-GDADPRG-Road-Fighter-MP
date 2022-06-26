@@ -3,8 +3,8 @@
 #include "MainMenuScene.h"
 #include "GameScene.h"
 #include "GameScene_2.h"
-#include "LoadingScene.h"
-#include "ApplicationManager.h"
+#include "ScoreScene.h"
+
 
 // constructor and destructor of the Game Class
 Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighter", sf::Style::Fullscreen)
@@ -15,16 +15,15 @@ Game::Game() : m_Window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Road Fighte
 	ApplicationManager::getInstance()->initialize(&m_Window);
 	TextureManager::getInstance()->loadAll();
 	FontManager::getInstance()->loadAll();
-	TextureManager::getInstance()->loadSpriteSheet();
 	SFXManager::getInstance()->loadAll();
+	ScoreManager::getInstance()->initialize();
 
-	SceneManager::getInstance()->registerScene(new LoadingScene());
 	SceneManager::getInstance()->registerScene(new MainMenuScene());
 	SceneManager::getInstance()->registerScene(new GameScene());
 	SceneManager::getInstance()->registerScene(new GameScene_2());
+	SceneManager::getInstance()->registerScene(new ScoreScene());
 
-	//SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
-	SceneManager::getInstance()->loadScene(SceneManager::COURSE_ONE_NAME);
+	SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCREEN_NAME);
 }
 
 

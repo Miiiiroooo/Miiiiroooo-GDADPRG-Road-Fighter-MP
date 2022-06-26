@@ -12,9 +12,10 @@ public:
 	~GameScreen_2();
 
 	void initialize();
-	void spawnGoalLine();
 	void update(sf::Time deltaTime);
 
+private:
+	void spawnGoalLine();
 	void onGoal();
 	void onGameOver();
 	void onTrasition();
@@ -42,6 +43,6 @@ private:
 	UIText* gameOverText = NULL;
 
 	// transition
-	bool isTransition = false;
+	bool isTransitioning = false;
 };
 

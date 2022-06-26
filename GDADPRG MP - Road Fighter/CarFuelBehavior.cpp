@@ -30,8 +30,11 @@ void CarFuelBehavior::perform()
 		if (carFuel->hasBeenCrashed())
 			carFuel->playTune();
 
-		gameManager->addFuel(3);
-		gameManager->addScore(1000);
+		if (!gameManager->checkGameOver())
+		{
+			gameManager->addFuel(4);
+			gameManager->addScore(1000);
+		}
 
 		GameObjectPool* carFuelPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::CAR_FUEL_POOL_TAG);
 		carFuelPool->releasePoolable(carFuel);

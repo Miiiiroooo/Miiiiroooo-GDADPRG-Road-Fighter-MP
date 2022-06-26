@@ -9,6 +9,7 @@
 #include "SceneManager.h"
 #include "SFXManager.h"
 #include "PhysicsManager.h"
+#include "ScoreManager.h"
 
 // Objects
 #include "Player.h"
@@ -100,23 +101,10 @@ void GameScreen::initialize()
 }
 
 
-void GameScreen::spawnGoalLine()
-{
-	GoalLineObject* goalLine = new GoalLineObject("GoalLine", 0.8f);
-	GameObjectManager::getInstance()->addObject(goalLine);
-	goalLine->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, -500);
-
-	Collider* collider = (Collider*)goalLine->findComponentByName("GoalLineCollider");
-	PhysicsManager::getInstance()->trackObject(collider);
-
-	isGoalLineSpawned = true;
-}
-
-
 void GameScreen::update(sf::Time deltaTime)
 {
 	// check if player has reached a certain distance to spawn the goal line
-	if (gameManager->getDistance() > 40000 && !isGoalLineSpawned)
+	if (gameManager->getDistance() > 55000 && !isGoalLineSpawned)
 	{
 		spawnGoalLine();
 	}
@@ -159,6 +147,16 @@ void GameScreen::update(sf::Time deltaTime)
 }
 
 
+void GameScreen::spawnGoalLine()
+{
+	GoalLineObject* goalLine = new GoalLineObject("GoalLine", 0.8f);
+	GameObjectManager::getInstance()->addObject(goalLine);
+	goalLine->getTransformable()->setPosition(Game::WINDOW_WIDTH / 2, -500);
+
+	isGoalLineSpawned = true;
+}
+
+
 void GameScreen::onCheckpoint()
 {
 	if (!isCheckpoint)  // a flag that prevents repetitive declarations of the following objects and components
@@ -182,6 +180,11 @@ void GameScreen::onCheckpoint()
 		checkpointUI->setParent(this);
 		checkpointUI->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2 - 200);
 
+
+		// update score and checkpoint flag
+		int fuelScore = gameManager->getFuel() * 100;
+		ScoreManager::getInstance()->updateScore(gameManager->getScore() + fuelScore);
+
 		isCheckpoint = true;
 	}
 }
@@ -191,6 +194,7 @@ void GameScreen::onGameOver()
 {
 	if (!isGameOver) // a flag that prevents repetitive declarations of the following objects and components
 	{
+		// init game over tune
 		sf::SoundBuffer* buffer = SFXManager::getInstance()->getAudio("GameOver");
 		this->gameOverTune = new sf::Sound();
 		gameOverTune->setBuffer(*buffer);
@@ -205,12 +209,19 @@ void GameScreen::onGameOver()
 		soundHandler->EnableSound(false);
 
 
+		// init game over text
 		this->gameOverText = new UIText("GameOver");
 		GameObjectManager::getInstance()->addObject(gameOverText);
 		gameOverText->setParent(this);
 		gameOverText->setSize(100);
 		gameOverText->setText("GAME\nOVER");
 		gameOverText->setPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);		
+
+
+		// update score and gameover flag
+		ScoreManager::getInstance()->updateScore(gameManager->getScore());
+		ScoreManager::getInstance()->decideHighScore();
+		ScoreManager::getInstance()->updateFile();
 
 		isGameOver = true;
 	}
@@ -223,14 +234,14 @@ void GameScreen::onTrasition()
 	if (gameManager->checkGoal())
 		sceneToChange = SceneManager::COURSE_TWO_NAME;
 	else if (gameManager->checkGameOver())
-		sceneToChange = SceneManager::MAIN_MENU_SCREEN_NAME;
+		sceneToChange = SceneManager::SCORE_SCREEN_NAME;
 
 
-	if (!isTransition)
+	if (!isTransitioning)
 	{
 		BlackScreen* blackScreen = new BlackScreen("BlackScreen", sceneToChange);
 		GameObjectManager::getInstance()->addObject(blackScreen);
 
-		isTransition = true;
+		isTransitioning = true;
 	}
 }

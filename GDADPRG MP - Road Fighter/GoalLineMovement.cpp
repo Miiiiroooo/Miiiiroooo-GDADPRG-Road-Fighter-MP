@@ -26,5 +26,8 @@ void GoalLineMovement::perform()
 	{
 		float speed = std::pow(gameManager->getSpeed(), 1.2);
 		goalLine->getTransformable()->move(0, speed * deltaTime.asSeconds());
+
+		if (goalLine->getTransformable()->getPosition().y >= 800)
+			gameManager->setGoal(true);
 	}
 }

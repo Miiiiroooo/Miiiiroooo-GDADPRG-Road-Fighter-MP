@@ -47,6 +47,8 @@ void TextureManager::loadAll()
 	}
 
 	inFile.close();
+
+	loadSpriteSheet();
 }
 
 

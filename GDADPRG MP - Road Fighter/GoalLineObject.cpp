@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "GoalLineObject.h"
 #include "GoalLineMovement.h"
-#include "PhysicsManager.h"
 
 
 // constructor and destructor of the GoalLineObject Class
@@ -37,26 +36,4 @@ void GoalLineObject::initialize()
 	GoalLineMovement* logicComponent = new GoalLineMovement("GoalLineMovement");
 	this->attachComponent(logicComponent);
 	logicComponent->attachOwner(this);
-
-	this->collider = new Collider("GoalLineCollider");
-	this->collider->setLocalBounds(sprite->getGlobalBounds());
-	this->collider->setCollisionListener(this);
-	this->attachComponent(collider);
-}
-
-
-void GoalLineObject::onCollisionEnter(AGameObject* contact)
-{
-	if (contact->getName().find("EnemyCar") != std::string::npos ||
-		contact->getName().find("Obstacle") != std::string::npos ||
-		contact->getName().find("CarFuel") != std::string::npos)
-	{
-		this->collider->setAlreadyCollided(false);
-	}
-}
-
-
-void GoalLineObject::onCollisionExit(AGameObject* gameOBject)
-{
-	PhysicsManager::getInstance()->untrackObject(this->collider);
 }

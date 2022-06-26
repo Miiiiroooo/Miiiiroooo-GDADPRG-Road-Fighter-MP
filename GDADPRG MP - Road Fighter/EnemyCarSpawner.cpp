@@ -30,25 +30,20 @@ void EnemyCarSpawner::perform()
 	bool ifSpawn = (gameManager->getDistance() - posLastSpawn) > MAX_DISTANCE_SPAWN;
 	if (ifSpawn && !gameManager->crashed() && gameManager->getSpeed() != 0)
 	{
-		int randNum = rand() % 10;
+		posLastSpawn += gameManager->getDistance() - posLastSpawn;
+		APoolable* poolableObj = enemyCarPool->requestPoolable();
 
-		if (randNum < 4)  // 40 % chance obstacle spawn after cooldown
+		if (poolableObj != NULL) 
 		{
-			posLastSpawn += gameManager->getDistance() - posLastSpawn;
-			APoolable* poolableObj = enemyCarPool->requestPoolable();
-
-			if (poolableObj != NULL) 
-			{
-				// set position of the poolable object
-				int randX = rand() % (rightEdge - leftEdge) + leftEdge;
-				poolableObj->setPosition((float)randX, -75.0f);
+			// set position of the poolable object
+			int randX = rand() % (rightEdge - leftEdge) + leftEdge;
+			poolableObj->setPosition((float)randX, -75.0f);
 
 
-				// update phsyics manager
-				Collider* collider = (Collider*)poolableObj->findComponentByName("EnemyCarCollider");
-				PhysicsManager::getInstance()->trackObject(collider);
+			// update phsyics manager
+			Collider* collider = (Collider*)poolableObj->findComponentByName("EnemyCarCollider");
+			PhysicsManager::getInstance()->trackObject(collider);
 			}
-		}
 	}
 }
 

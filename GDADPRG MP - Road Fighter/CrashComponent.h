@@ -20,6 +20,8 @@ private:
 	GameManager* gameManager;
 	float ticks;
 
+	bool hasUntracked = false;
+
 	int leftEdge = 0;
 	int rightEdge = 0;
 };
