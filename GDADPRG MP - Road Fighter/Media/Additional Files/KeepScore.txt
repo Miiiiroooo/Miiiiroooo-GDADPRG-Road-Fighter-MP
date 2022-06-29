@@ -1,2 +1,2 @@
 Score:   0
-HighScore:   33900
+HighScore:   0
